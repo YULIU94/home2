@@ -14023,7 +14023,7 @@ var subscribeToResult_1 = __webpack_require__("../../../../rxjs/util/subscribeTo
  * <img src="./img/repeatWhen.png" width="100%">
  *
  * @param {function(notifications: Observable): Observable} notifier - Receives an Observable of notifications with
- * which a user can `complete` or `error`, aborting the repetition.
+ * which a user_old can `complete` or `error`, aborting the repetition.
  * @return {Observable} The source Observable modified with repeat logic.
  * @method repeatWhen
  * @owner Observable
@@ -14210,7 +14210,7 @@ var subscribeToResult_1 = __webpack_require__("../../../../rxjs/util/subscribeTo
  * <img src="./img/retryWhen.png" width="100%">
  *
  * @param {function(errors: Observable): Observable} notifier - Receives an Observable of notifications with which a
- * user can `complete` or `error`, aborting the retry.
+ * user_old can `complete` or `error`, aborting the retry.
  * @return {Observable} The source Observable modified with retry logic.
  * @method retryWhen
  * @owner Observable
@@ -18095,7 +18095,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Subscription_1 = __webpack_require__("../../../../rxjs/Subscription.js");
 /**
  * A unit of work to be executed in a {@link Scheduler}. An action is typically
- * created from within a Scheduler and an RxJS user does not need to concern
+ * created from within a Scheduler and an RxJS user_old does not need to concern
  * themselves about creating and manipulating an Action.
  *
  * ```ts
@@ -20873,9 +20873,9 @@ var APP_BASE_HREF = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["g" /* Injec
  * `Location` is responsible for normalizing the URL against the application's base href.
  * A normalized URL is absolute from the URL host, includes the application's base href, and has no
  * trailing slash:
- * - `/my/app/user/123` is normalized
- * - `my/app/user/123` **is not** normalized
- * - `/my/app/user/123/` **is not** normalized
+ * - `/my/app/user_old/123` is normalized
+ * - `my/app/user_old/123` **is not** normalized
+ * - `/my/app/user_old/123/` **is not** normalized
  *
  * ### Example
  * {\@example common/location/ts/path_location_component.ts region='LocationComponent'}
@@ -22209,8 +22209,8 @@ var NgForOfContext = (function () {
  * - `odd: boolean`: True when the item has an odd index in the iterable.
  *
  * ```
- * <li *ngFor="let user of userObservable | async as users; index as i; first as isFirst">
- *    {{i}}/{{users.length}}. {{user}} <span *ngIf="isFirst">default</span>
+ * <li *ngFor="let user_old of userObservable | async as users; index as i; first as isFirst">
+ *    {{i}}/{{users.length}}. {{user_old}} <span *ngIf="isFirst">default</span>
  * </li>
  * ```
  *
@@ -22225,9 +22225,9 @@ var NgForOfContext = (function () {
  *
  * Angular uses object identity to track insertions and deletions within the iterator and reproduce
  * those changes in the DOM. This has important implications for animations and any stateful
- * controls (such as `<input>` elements which accept user input) that are present. Inserted rows can
+ * controls (such as `<input>` elements which accept user_old input) that are present. Inserted rows can
  * be animated in, deleted rows can be animated out, and unchanged rows retain any unsaved state
- * such as user input.
+ * such as user_old input.
  *
  * It is possible for the identities of elements in the iterator to change while the data does not.
  * This can happen, for example, if the iterator produced from an RPC to the server, and that
@@ -22485,8 +22485,8 @@ function getTypeNameForDebugging(type) {
  *
  * Notice that:
  *  - We use only one `async` pipe and hence only one subscription gets created.
- *  - `ngIf` stores the result of the `userStream|async` in the local variable `user`.
- *  - The local `user` can then be bound repeatedly in a more efficient way.
+ *  - `ngIf` stores the result of the `userStream|async` in the local variable `user_old`.
+ *  - The local `user_old` can then be bound repeatedly in a more efficient way.
  *  - No need to use the safe-traversal-operator `?.` to access properties as `ngIf` will only
  *    display the data if `userStream` returns a value.
  *  - We can display an alternative template while waiting for the data.
@@ -24071,7 +24071,7 @@ var ISO8601_DATE_REGEX = /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\d\
  * In javascript, only the components specified will be respected (not the ordering,
  * punctuations, ...) and details of the formatting will be dependent on the locale.
  *
- * Timezone of the formatted text will be the local system timezone of the end-user's machine.
+ * Timezone of the formatted text will be the local system timezone of the end-user_old's machine.
  *
  * When the expression is a ISO string without time (e.g. 2016-09-19) the time zone offset is not
  * applied and the formatted text will have the same day, month and year of the expression.
@@ -27318,7 +27318,7 @@ function templateSourceUrl(ngModuleType, compMeta, templateMeta) {
         url = ((templateMeta.templateUrl));
     }
     // always prepend ng:// to make angular resources easy to find and not clobber
-    // user resources.
+    // user_old resources.
     return sourceUrl(url);
 }
 /**
@@ -38670,7 +38670,7 @@ function getUrlScheme(url) {
  * undefined.
  *
  * @param {?=} opt_scheme The scheme such as 'http'.
- * @param {?=} opt_userInfo The user name before the '\@'.
+ * @param {?=} opt_userInfo The user_old name before the '\@'.
  * @param {?=} opt_domain The domain such as 'www.google.com', already
  *     URI-encoded.
  * @param {?=} opt_port The port number.
@@ -48420,7 +48420,7 @@ var ForJitSerializer = (function () {
         var /** @type {?} */ expressions = [this.serializeSummary(summary)];
         var /** @type {?} */ providers = [];
         if (metadata instanceof CompileNgModuleMetadata) {
-            expressions.push.apply(expressions, 
+            expressions.push.apply(expressions,
             // For directives / pipes, we only add the declared ones,
             // and rely on transitively importing NgModules to get the transitive
             // summaries.
@@ -48675,7 +48675,7 @@ var AotCompiler = (function () {
         var /** @type {?} */ generatedFiles = [];
         var /** @type {?} */ ngFactoryOutputCtx = this._createOutputContext(ngfactoryFilePath(srcFileUrl, true));
         var /** @type {?} */ jitSummaryOutputCtx = this._createOutputContext(summaryForJitFileName(srcFileUrl, true));
-        // create exports that user code can reference
+        // create exports that user_old code can reference
         ngModules.forEach(function (ngModuleReference) {
             _this._ngModuleCompiler.createStub(ngFactoryOutputCtx, ngModuleReference);
             createForJitStub(jitSummaryOutputCtx, ngModuleReference);
@@ -48710,7 +48710,7 @@ var AotCompiler = (function () {
         // Note: we are creating stub ngfactory/ngsummary for all source files,
         // as the real calculation requires almost the same logic as producing the real content for
         // them. Our pipeline will filter out empty ones at the end. Because of this filter, however,
-        // stub references to the reference type needs to be generated even if the user cannot
+        // stub references to the reference type needs to be generated even if the user_old cannot
         // refer to type from the `.d.ts` file to prevent the file being elided from the emit.
         generatedFiles.push(this._codegenSourceModule(srcFileUrl, ngFactoryOutputCtx));
         if (this._enableSummariesForJit) {
@@ -53234,7 +53234,7 @@ function makePropDecorator(name, props, parentClass) {
  *   ];
  * }
  *
- * // user code
+ * // user_old code
  * let routes = [
  *   {path: '/root', component: RootComp},
  *   {path: '/teams', component: TeamsComp}
@@ -55047,7 +55047,7 @@ var ReflectiveInjector = (function () {
     /**
      * Parent of this injector.
      *
-     * <!-- TODO: Add a link to the section of the user guide talking about hierarchical injection.
+     * <!-- TODO: Add a link to the section of the user_old guide talking about hierarchical injection.
      * -->
      *
      * ### Example ([live demo](http://plnkr.co/edit/eosMGo?p=preview))
@@ -55064,7 +55064,7 @@ var ReflectiveInjector = (function () {
     /**
      * Resolves an array of providers and creates a child injector from those providers.
      *
-     * <!-- TODO: Add a link to the section of the user guide talking about hierarchical injection.
+     * <!-- TODO: Add a link to the section of the user_old guide talking about hierarchical injection.
      * -->
      *
      * The passed-in providers can be an array of `Type`, {\@link Provider},
@@ -55095,7 +55095,7 @@ var ReflectiveInjector = (function () {
     /**
      * Creates a child injector from previously resolved providers.
      *
-     * <!-- TODO: Add a link to the section of the user guide talking about hierarchical injection.
+     * <!-- TODO: Add a link to the section of the user_old guide talking about hierarchical injection.
      * -->
      *
      * This API is the recommended way to construct injectors in performance-sensitive parts.
@@ -56926,7 +56926,7 @@ function enableProdMode() {
  * Returns whether Angular is in development mode. After called once,
  * the value is locked and won't change any more.
  *
- * By default, this is true, unless a user calls `enableProdMode` before calling this.
+ * By default, this is true, unless a user_old calls `enableProdMode` before calling this.
  *
  * \@experimental APIs related to application bootstrap are currently under review.
  * @return {?}
@@ -62532,7 +62532,7 @@ var ComponentFactory_ = (function (_super) {
      * @param {?} ngContentSelectors
      */
     function ComponentFactory_(selector, componentType, viewDefFactory, _inputs, _outputs, ngContentSelectors) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -63837,7 +63837,7 @@ function updateProp(view, providerData, def, bindingIdx, value, changes) {
     var /** @type {?} */ binding = def.bindings[bindingIdx];
     var /** @type {?} */ propName = ((binding.name));
     // Note: This is still safe with Closure Compiler as
-    // the user passed in the property name as an object has to `providerDef`,
+    // the user_old passed in the property name as an object has to `providerDef`,
     // so Closure Compiler will have renamed the property correctly already.
     providerData.instance[propName] = value;
     if (def.flags & 524288 /* OnChanges */) {
@@ -66547,7 +66547,7 @@ var NgModuleFactory_ = (function (_super) {
      * @param {?} _ngModuleDefFactory
      */
     function NgModuleFactory_(moduleType, _bootstrapComponents, _ngModuleDefFactory) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -66923,7 +66923,7 @@ function style$1(tokens) {
  * // the state in which an element is detached from from the application.
  * state("void", style({ height: 0 }))
  *
- * // user-defined states
+ * // user_old-defined states
  * state("closed", style({ height: 0 }))
  * state("open, visible", style({ height: "*" }))
  * ```
@@ -67745,7 +67745,7 @@ var AbstractControlDirective = (function () {
     });
     Object.defineProperty(AbstractControlDirective.prototype, "pristine", {
         /**
-         * A control is `pristine` if the user has not yet changed
+         * A control is `pristine` if the user_old has not yet changed
          * the value in the UI.
          *
          * Note that programmatic changes to a control's value will
@@ -67758,7 +67758,7 @@ var AbstractControlDirective = (function () {
     });
     Object.defineProperty(AbstractControlDirective.prototype, "dirty", {
         /**
-         * A control is `dirty` if the user has changed the value
+         * A control is `dirty` if the user_old has changed the value
          * in the UI.
          *
          * Note that programmatic changes to a control's value will
@@ -67771,7 +67771,7 @@ var AbstractControlDirective = (function () {
     });
     Object.defineProperty(AbstractControlDirective.prototype, "touched", {
         /**
-         * A control is marked `touched` once the user has triggered
+         * A control is marked `touched` once the user_old has triggered
          * a `blur` event on it.
          * @return {?}
          */
@@ -67781,7 +67781,7 @@ var AbstractControlDirective = (function () {
     });
     Object.defineProperty(AbstractControlDirective.prototype, "untouched", {
         /**
-         * A control is `untouched` if the user has not yet triggered
+         * A control is `untouched` if the user_old has not yet triggered
          * a `blur` event on it.
          * @return {?}
          */
@@ -68288,7 +68288,7 @@ var DefaultValueAccessor = (function () {
         this.onChange = function (_) { };
         this.onTouched = function () { };
         /**
-         * Whether the user is creating a composition string (IME events).
+         * Whether the user_old is creating a composition string (IME events).
          */
         this._composing = false;
         if (this._compositionMode == null) {
@@ -70054,7 +70054,7 @@ var AbstractControl = (function () {
     });
     Object.defineProperty(AbstractControl.prototype, "pristine", {
         /**
-         * A control is `pristine` if the user has not yet changed
+         * A control is `pristine` if the user_old has not yet changed
          * the value in the UI.
          *
          * Note that programmatic changes to a control's value will
@@ -70067,7 +70067,7 @@ var AbstractControl = (function () {
     });
     Object.defineProperty(AbstractControl.prototype, "dirty", {
         /**
-         * A control is `dirty` if the user has changed the value
+         * A control is `dirty` if the user_old has changed the value
          * in the UI.
          *
          * Note that programmatic changes to a control's value will
@@ -70080,7 +70080,7 @@ var AbstractControl = (function () {
     });
     Object.defineProperty(AbstractControl.prototype, "touched", {
         /**
-         * A control is marked `touched` once the user has triggered
+         * A control is marked `touched` once the user_old has triggered
          * a `blur` event on it.
          * @return {?}
          */
@@ -70090,7 +70090,7 @@ var AbstractControl = (function () {
     });
     Object.defineProperty(AbstractControl.prototype, "untouched", {
         /**
-         * A control is `untouched` if the user has not yet triggered
+         * A control is `untouched` if the user_old has not yet triggered
          * a `blur` event on it.
          * @return {?}
          */
@@ -70371,7 +70371,7 @@ var AbstractControl = (function () {
     /**
      * Sets errors on a form control.
      *
-     * This is used when validations are run manually by the user, rather than automatically.
+     * This is used when validations are run manually by the user_old, rather than automatically.
      *
      * Calling `setErrors` will also update the validity of the parent control.
      *
@@ -71499,13 +71499,13 @@ var resolvedPromise = Promise.resolve(null);
  * (ex: `#myForm="ngForm"`). This is optional, but useful.  Many properties from the underlying
  * {\@link FormGroup} instance are duplicated on the directive itself, so a reference to it
  * will give you access to the aggregate value and validity status of the form, as well as
- * user interaction properties like `dirty` and `touched`.
+ * user_old interaction properties like `dirty` and `touched`.
  *
  * To register child controls with the form, you'll want to use {\@link NgModel} with a
  * `name` attribute.  You can also use {\@link NgModelGroup} if you'd like to create
  * sub-groups within the form.
  *
- * You can listen to the directive's `ngSubmit` event to be notified when the user has
+ * You can listen to the directive's `ngSubmit` event to be notified when the user_old has
  * triggered a form submission. The `ngSubmit` event will be emitted with the original form
  * submission event.
  *
@@ -71858,7 +71858,7 @@ var resolvedPromise$1 = Promise.resolve(null);
  * \@whatItDoes Creates a {\@link FormControl} instance from a domain model and binds it
  * to a form control element.
  *
- * The {\@link FormControl} instance will track the value, user interaction, and
+ * The {\@link FormControl} instance will track the value, user_old interaction, and
  * validation status of the control and keep the view synced with the model. If used
  * within a parent form, the directive will also register itself with the form as a child
  * control.
@@ -72175,7 +72175,7 @@ var formControlBinding$1 = {
  *
  * In other words, this directive ensures that any values written to the {\@link FormControl}
  * instance programmatically will be written to the DOM element (model -> view). Conversely,
- * any values written to the DOM element through user input will be reflected in the
+ * any values written to the DOM element through user_old input will be reflected in the
  * {\@link FormControl} instance (view -> model).
  *
  * \@howToUse
@@ -72351,7 +72351,7 @@ var formDirectiveProvider$1 = {
  * its {\@link AbstractControl#statusChanges} event to be notified when the validation status is
  * re-calculated.
  *
- * Furthermore, you can listen to the directive's `ngSubmit` event to be notified when the user has
+ * Furthermore, you can listen to the directive's `ngSubmit` event to be notified when the user_old has
  * triggered a form submission. The `ngSubmit` event will be emitted with the original form
  * submission event.
  *
@@ -72861,7 +72861,7 @@ var controlNameBinding = {
  *
  * In other words, this directive ensures that any values written to the {\@link FormControl}
  * instance programmatically will be written to the DOM element (model -> view). Conversely,
- * any values written to the DOM element through user input will be reflected in the
+ * any values written to the DOM element through user_old input will be reflected in the
  * {\@link FormControl} instance (view -> model).
  *
  * \@howToUse
@@ -73429,7 +73429,7 @@ PatternValidator.propDecorators = {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * \@whatItDoes Creates an {\@link AbstractControl} from a user-specified configuration.
+ * \@whatItDoes Creates an {\@link AbstractControl} from a user_old-specified configuration.
  *
  * It is essentially syntactic sugar that shortens the `new FormGroup()`,
  * `new FormControl()`, and `new FormArray()` boilerplate that can build up in larger
@@ -73692,7 +73692,7 @@ ReactiveFormsModule.ctorParameters = function () { return []; };
 /**
  * @module
  * @description
- * This module is used for handling user input, by defining and building a {@link FormGroup} that
+ * This module is used for handling user_old input, by defining and building a {@link FormGroup} that
  * consists of {@link FormControl} objects, and mapping them onto the DOM. {@link FormControl}
  * objects can then be used to read information from the form DOM elements.
  *
@@ -80028,7 +80028,7 @@ function sanitizeStyle(value) {
  *
  * \@security Calling any of the `bypassSecurityTrust...` APIs disables Angular's built-in
  * sanitization for the value passed in. Carefully check and audit all values and code paths going
- * into this call. Make sure any user data is appropriately escaped for this security context.
+ * into this call. Make sure any user_old data is appropriately escaped for this security context.
  * For more detail, see the [Security Guide](http://g.co/ng/security).
  *
  * \@stable
@@ -80055,7 +80055,7 @@ var DomSanitizer = (function () {
      * is unsafe (e.g. contains `<script>` tags) and the code should be executed. The sanitizer will
      * leave safe HTML intact, so in most situations this method should not be used.
      *
-     * **WARNING:** calling this method with untrusted user data exposes your application to XSS
+     * **WARNING:** calling this method with untrusted user_old data exposes your application to XSS
      * security risks!
      * @abstract
      * @param {?} value
@@ -80065,7 +80065,7 @@ var DomSanitizer = (function () {
     /**
      * Bypass security and trust the given value to be safe style value (CSS).
      *
-     * **WARNING:** calling this method with untrusted user data exposes your application to XSS
+     * **WARNING:** calling this method with untrusted user_old data exposes your application to XSS
      * security risks!
      * @abstract
      * @param {?} value
@@ -80075,7 +80075,7 @@ var DomSanitizer = (function () {
     /**
      * Bypass security and trust the given value to be safe JavaScript.
      *
-     * **WARNING:** calling this method with untrusted user data exposes your application to XSS
+     * **WARNING:** calling this method with untrusted user_old data exposes your application to XSS
      * security risks!
      * @abstract
      * @param {?} value
@@ -80086,7 +80086,7 @@ var DomSanitizer = (function () {
      * Bypass security and trust the given value to be a safe style URL, i.e. a value that can be used
      * in hyperlinks or `<img src>`.
      *
-     * **WARNING:** calling this method with untrusted user data exposes your application to XSS
+     * **WARNING:** calling this method with untrusted user_old data exposes your application to XSS
      * security risks!
      * @abstract
      * @param {?} value
@@ -80097,7 +80097,7 @@ var DomSanitizer = (function () {
      * Bypass security and trust the given value to be a safe resource URL, i.e. a location that may
      * be used to load executable code from, like `<script src>`, or `<iframe src>`.
      *
-     * **WARNING:** calling this method with untrusted user data exposes your application to XSS
+     * **WARNING:** calling this method with untrusted user_old data exposes your application to XSS
      * security risks!
      * @abstract
      * @param {?} value
@@ -80440,7 +80440,7 @@ var AngularProfiler = (function () {
      * the current state of the UI. It runs a minimum of 5 rounds for a minimum
      * of 500 milliseconds.
      *
-     * Optionally, a user may pass a `config` parameter containing a map of
+     * Optionally, a user_old may pass a `config` parameter containing a map of
      * options. Supported options are:
      *
      * `record` (boolean) - causes the profiler to record a CPU profile while
@@ -81486,12 +81486,12 @@ function containsSegmentGroupHelper(container, containee, containeePaths) {
  * class MyComponent {
  *   constructor(router: Router) {
  *     const tree: UrlTree =
- *       router.parseUrl('/team/33/(user/victor//support:help)?debug=true#fragment');
+ *       router.parseUrl('/team/33/(user_old/victor//support:help)?debug=true#fragment');
  *     const f = tree.fragment; // return 'fragment'
  *     const q = tree.queryParams; // returns {debug: 'true'}
  *     const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
  *     const s: UrlSegment[] = g.segments; // returns 2 segments 'team' and '33'
- *     g.children[PRIMARY_OUTLET].segments; // returns 2 segments 'user' and 'victor'
+ *     g.children[PRIMARY_OUTLET].segments; // returns 2 segments 'user_old' and 'victor'
  *     g.children['support'].segments; // return 1 segment 'help'
  *   }
  * }
@@ -82889,7 +82889,7 @@ function createEmptyStateSnapshot(urlTree, rootComponent) {
  *     const id: Observable<string> = route.params.map(p => p.id);
  *     const url: Observable<string> = route.url.map(segments => segments.join(''));
  *     // route.data includes both `data` and `resolve`
- *     const user = route.data.map(d => d.user);
+ *     const user_old = route.data.map(d => d.user_old);
  *   }
  * }
  * ```
@@ -83051,7 +83051,7 @@ function inheritedParamsDataResolve(route) {
  *   constructor(route: ActivatedRoute) {
  *     const id: string = route.snapshot.params.id;
  *     const url: string = route.snapshot.url.join('');
- *     const user = route.snapshot.data.user;
+ *     const user_old = route.snapshot.data.user_old;
  *   }
  * }
  * ```
@@ -84504,7 +84504,7 @@ var Router = (function () {
      * router.resetConfig([
      *  { path: 'team/:id', component: TeamCmp, children: [
      *    { path: 'simple', component: SimpleCmp },
-     *    { path: 'user/:name', component: UserCmp }
+     *    { path: 'user_old/:name', component: UserCmp }
      *  ]}
      * ]);
      * ```
@@ -84540,36 +84540,36 @@ var Router = (function () {
      * ### Usage
      *
      * ```
-     * // create /team/33/user/11
-     * router.createUrlTree(['/team', 33, 'user', 11]);
+     * // create /team/33/user_old/11
+     * router.createUrlTree(['/team', 33, 'user_old', 11]);
      *
-     * // create /team/33;expand=true/user/11
-     * router.createUrlTree(['/team', 33, {expand: true}, 'user', 11]);
+     * // create /team/33;expand=true/user_old/11
+     * router.createUrlTree(['/team', 33, {expand: true}, 'user_old', 11]);
      *
      * // you can collapse static segments like this (this works only with the first passed-in value):
-     * router.createUrlTree(['/team/33/user', userId]);
+     * router.createUrlTree(['/team/33/user_old', userId]);
      *
      * // If the first segment can contain slashes, and you do not want the router to split it, you
      * // can do the following:
      *
      * router.createUrlTree([{segmentPath: '/one/two'}]);
      *
-     * // create /team/33/(user/11//right:chat)
-     * router.createUrlTree(['/team', 33, {outlets: {primary: 'user/11', right: 'chat'}}]);
+     * // create /team/33/(user_old/11//right:chat)
+     * router.createUrlTree(['/team', 33, {outlets: {primary: 'user_old/11', right: 'chat'}}]);
      *
      * // remove the right secondary node
-     * router.createUrlTree(['/team', 33, {outlets: {primary: 'user/11', right: null}}]);
+     * router.createUrlTree(['/team', 33, {outlets: {primary: 'user_old/11', right: null}}]);
      *
-     * // assuming the current url is `/team/33/user/11` and the route points to `user/11`
+     * // assuming the current url is `/team/33/user_old/11` and the route points to `user_old/11`
      *
-     * // navigate to /team/33/user/11/details
+     * // navigate to /team/33/user_old/11/details
      * router.createUrlTree(['details'], {relativeTo: route});
      *
-     * // navigate to /team/33/user/22
+     * // navigate to /team/33/user_old/22
      * router.createUrlTree(['../22'], {relativeTo: route});
      *
-     * // navigate to /team/44/user/22
-     * router.createUrlTree(['../../team/44/user/22'], {relativeTo: route});
+     * // navigate to /team/44/user_old/22
+     * router.createUrlTree(['../../team/44/user_old/22'], {relativeTo: route});
      * ```
      * @param {?} commands
      * @param {?=} navigationExtras
@@ -84612,10 +84612,10 @@ var Router = (function () {
      * ### Usage
      *
      * ```
-     * router.navigateByUrl("/team/33/user/11");
+     * router.navigateByUrl("/team/33/user_old/11");
      *
      * // Navigate without updating the URL
-     * router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
+     * router.navigateByUrl("/team/33/user_old/11", { skipLocationChange: true });
      * ```
      *
      * In opposite to `navigate`, `navigateByUrl` takes a whole URL
@@ -84642,10 +84642,10 @@ var Router = (function () {
      * ### Usage
      *
      * ```
-     * router.navigate(['team', 33, 'user', 11], {relativeTo: route});
+     * router.navigate(['team', 33, 'user_old', 11], {relativeTo: route});
      *
      * // Navigate without updating the URL
-     * router.navigate(['team', 33, 'user', 11], {relativeTo: route, skipLocationChange: true});
+     * router.navigate(['team', 33, 'user_old', 11], {relativeTo: route, skipLocationChange: true});
      * ```
      *
      * In opposite to `navigateByUrl`, `navigate` always takes a delta that is applied to the current
@@ -84727,7 +84727,7 @@ var Router = (function () {
      */
     Router.prototype.scheduleNavigation = function (rawUrl, source, extras) {
         var /** @type {?} */ lastNavigation = this.navigations.value;
-        // If the user triggers a navigation imperatively (e.g., by using navigateByUrl),
+        // If the user_old triggers a navigation imperatively (e.g., by using navigateByUrl),
         // and that navigation results in 'replaceState' that leads to the same URL,
         // we should skip those.
         if (lastNavigation && source !== 'imperative' && lastNavigation.source === 'imperative' &&
@@ -85557,26 +85557,26 @@ function validateCommands(commands) {
  * \@howToUse
  *
  * Consider the following route configuration:
- * `[{ path: 'user/:name', component: UserCmp }]`
+ * `[{ path: 'user_old/:name', component: UserCmp }]`
  *
- * When linking to this `user/:name` route, you can write:
- * `<a routerLink='/user/bob'>link to user component</a>`
+ * When linking to this `user_old/:name` route, you can write:
+ * `<a routerLink='/user_old/bob'>link to user_old component</a>`
  *
  * \@description
  *
  * The RouterLink directives let you link to specific parts of your app.
  *
  * When the link is static, you can use the directive as follows:
- * `<a routerLink="/user/bob">link to user component</a>`
+ * `<a routerLink="/user_old/bob">link to user_old component</a>`
  *
  * If you use dynamic values to generate the link, you can pass an array of path
  * segments, followed by the params for each segment.
  *
- * For instance `['/team', teamId, 'user', userName, {details: true}]`
- * means that we want to generate a link to `/team/11/user/bob;details=true`.
+ * For instance `['/team', teamId, 'user_old', userName, {details: true}]`
+ * means that we want to generate a link to `/team/11/user_old/bob;details=true`.
  *
  * Multiple static segments can be merged into one
- * (e.g., `['/team/11/user', userName, {details: true}]`).
+ * (e.g., `['/team/11/user_old', userName, {details: true}]`).
  *
  * The first segment name can be prepended with `/`, `./`, or `../`:
  * * If the first segment begins with `/`, the router will look up the route from the root of the
@@ -85588,18 +85588,18 @@ function validateCommands(commands) {
  * You can set query params and fragment as follows:
  *
  * ```
- * <a [routerLink]="['/user/bob']" [queryParams]="{debug: true}" fragment="education">
- *   link to user component
+ * <a [routerLink]="['/user_old/bob']" [queryParams]="{debug: true}" fragment="education">
+ *   link to user_old component
  * </a>
  * ```
- * RouterLink will use these to generate this link: `/user/bob#education?debug=true`.
+ * RouterLink will use these to generate this link: `/user_old/bob#education?debug=true`.
  *
  * (Deprecated in v4.0.0 use `queryParamsHandling` instead) You can also tell the
  * directive to preserve the current query params and fragment:
  *
  * ```
- * <a [routerLink]="['/user/bob']" preserveQueryParams preserveFragment>
- *   link to user component
+ * <a [routerLink]="['/user_old/bob']" preserveQueryParams preserveFragment>
+ *   link to user_old component
  * </a>
  * ```
  *
@@ -85610,17 +85610,17 @@ function validateCommands(commands) {
  *  same options for {\@link NavigationExtras#queryParamsHandling}
  *
  * ```
- * <a [routerLink]="['/user/bob']" [queryParams]="{debug: true}" queryParamsHandling="merge">
- *   link to user component
+ * <a [routerLink]="['/user_old/bob']" [queryParams]="{debug: true}" queryParamsHandling="merge">
+ *   link to user_old component
  * </a>
  * ```
  *
  * The router link directive always treats the provided input as a delta to the current url.
  *
- * For instance, if the current url is `/user/(box//aux:team)`.
+ * For instance, if the current url is `/user_old/(box//aux:team)`.
  *
- * Then the following link `<a [routerLink]="['/user/jim']">Jim</a>` will generate the link
- * `/user/(jim//aux:team)`.
+ * Then the following link `<a [routerLink]="['/user_old/jim']">Jim</a>` will generate the link
+ * `/user_old/(jim//aux:team)`.
  *
  * \@ngModule RouterModule
  *
@@ -85885,7 +85885,7 @@ function attrBoolValue(s) {
  * \@howToUse
  *
  * ```
- * <a routerLink="/user/bob" routerLinkActive="active-link">Bob</a>
+ * <a routerLink="/user_old/bob" routerLinkActive="active-link">Bob</a>
  * ```
  *
  * \@description
@@ -85896,31 +85896,31 @@ function attrBoolValue(s) {
  * Consider the following example:
  *
  * ```
- * <a routerLink="/user/bob" routerLinkActive="active-link">Bob</a>
+ * <a routerLink="/user_old/bob" routerLinkActive="active-link">Bob</a>
  * ```
  *
- * When the url is either '/user' or '/user/bob', the active-link class will
+ * When the url is either '/user_old' or '/user_old/bob', the active-link class will
  * be added to the `a` tag. If the url changes, the class will be removed.
  *
  * You can set more than one class, as follows:
  *
  * ```
- * <a routerLink="/user/bob" routerLinkActive="class1 class2">Bob</a>
- * <a routerLink="/user/bob" [routerLinkActive]="['class1', 'class2']">Bob</a>
+ * <a routerLink="/user_old/bob" routerLinkActive="class1 class2">Bob</a>
+ * <a routerLink="/user_old/bob" [routerLinkActive]="['class1', 'class2']">Bob</a>
  * ```
  *
  * You can configure RouterLinkActive by passing `exact: true`. This will add the classes
  * only when the url matches the link exactly.
  *
  * ```
- * <a routerLink="/user/bob" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+ * <a routerLink="/user_old/bob" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
  * true}">Bob</a>
  * ```
  *
  * You can assign the RouterLinkActive instance to a template variable and directly check
  * the `isActive` status.
  * ```
- * <a routerLink="/user/bob" routerLinkActive #rla="routerLinkActive">
+ * <a routerLink="/user_old/bob" routerLinkActive #rla="routerLinkActive">
  *   Bob {{ rla.isActive ? '(already open)' : ''}}
  * </a>
  * ```
@@ -85929,13 +85929,13 @@ function attrBoolValue(s) {
  *
  * ```
  * <div routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
- *   <a routerLink="/user/jim">Jim</a>
- *   <a routerLink="/user/bob">Bob</a>
+ *   <a routerLink="/user_old/jim">Jim</a>
+ *   <a routerLink="/user_old/bob">Bob</a>
  * </div>
  * ```
  *
- * This will set the active-link class on the div tag if the url is either '/user/jim' or
- * '/user/bob'.
+ * This will set the active-link class on the div tag if the url is either '/user_old/jim' or
+ * '/user_old/bob'.
  *
  * \@ngModule RouterModule
  *
