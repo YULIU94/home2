@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for making website for mobile-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+
+  <meta charset="UTF-8">
+  <title>Widget Edit</title>
+
+  <!--<link rel="stylesheet" href="../../vendors/bootstrap/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <!--Nav Bar-->
+  <div class="page-nav container-fluid nav-container">
+    <div class="row nav-row">
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <a href="widget-list.html" class="navbar-link">
+          <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
+        </a>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <p class="page-nav-p pull-left">
+          <b>Widget Edit</b>
+        </p>
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <a href="widget-list.html" class="navbar-link">
+          <button class="page-nav-btn glyphicon glyphicon-ok pull-right"></button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!--Content-->
+  <div class="widget-content">
+    <ul class="widget-ul">
+      <li class="widget-li">
+        <div class="widget-input-title">
+          <span>Name</span>
+        </div>
+        <input class="widget-input form-control"
+               type="text">
+      </li>
+      <li class="widget-li">
+        <div class="widget-input-title">
+          <span>Text</span>
+        </div>
+        <input class="widget-input form-control"
+               type="text"
+               placeholder="US Senate Reaches Compromise">
+      </li>
+      <li class="widget-li">
+        <div class="widget-input-title">
+          <span>Size</span>
+        </div>
+        <input class="widget-input form-control"
+               type="text"
+               placeholder="3">
+      </li>
+      <li>
+        <a class="btn btn-block btn-delete">Delete</a>
+      </li>
+    </ul>
+  </div>
+
+  <!--Bottom Bar-->
+  <div class="page-bottom">
+    <a href="../user/profile.html" class="navbar-link">
+      <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
+    </a>
+  </div>
+</body>
+</html>
