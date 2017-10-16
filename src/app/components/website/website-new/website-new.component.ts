@@ -29,13 +29,16 @@ export class WebsiteNewComponent implements OnInit {
     }
   }
 
-  toWebsiteList( ) {
-    this.router.navigate(['profile', this.userId, 'website']);
+  saveNewWebsite(websitename, websitedescription) {
+    const website = {'_id': '123', 'name': 'Facebook', 'developerId': '456', 'description': 'Lorem' };
+    website['_id'] = Math.random().toString();
+    website['name'] = websitename;
+    website['developerId'] = this.userId.toString();
+    website['description'] = websitedescription;
+    console.log(website);
+    this._websiteService.createWebsite(website['_id'], website);
   }
 
-  toProfile() {
-    this.router.navigate(['profile', this.userId]);
-  }
 
   ngOnInit() {
     this.activatedRoute.params

@@ -7,7 +7,7 @@
         <div class="col-sm-4 col-md-4 col-lg-4 hidden-xs nav-left">
           <div class="row">
             <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
-              <a (click)="toWebsiteList()">
+              <a routerLink="/profile/{{userId}}/website">
                 <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn" >
                 </button>
               </a>
@@ -16,7 +16,7 @@
               <p class="nav-p">Websites</p>
             </div>
             <div class="nav-left-right col-xs-2">
-              <a href="website-new.component.html">
+              <a routerLink="/profile/{{userId}}/website/new">
                 <button class="glyphicon glyphicon-plus nav-plus" >
                 </button>
               </a>
@@ -29,7 +29,7 @@
               <p class="nav-p ">Edit Website</p>
             </div>
             <div class="col-xs-1  nav-right-right nav-ok">
-              <a (click)="toWebsiteList()">
+              <a routerLink="/profile/{{userId}}/website">
                 <button class="glyphicon glyphicon-ok btn-white">
                 </button>
               </a>
@@ -39,7 +39,7 @@
         <div class="col-12 visible-xs nav-full">
           <div class="row">
             <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
-              <a (click)="toWebsiteList()">
+              <a routerLink="/profile/{{userId}}/website">
                 <button class="glyphicon glyphicon-chevron-left nav-back" >
                 </button>
               </a>
@@ -48,7 +48,10 @@
               <p class="nav-p">Websites</p>
             </div>
             <div class="nav-left-right col-xs-2 nav-ok">
-              <button class="glyphicon glyphicon-ok nav-ok-btn" >
+              <button
+                (click)="saveNewWebsite(websitename.value, websitedescription)"
+                class="glyphicon glyphicon-ok nav-ok-btn"
+                 routerLink="/profile/{{userId}}/website">
               </button>
             </div>
           </div>
@@ -114,17 +117,20 @@
         <p class="content-title">Website Name</p>
         <input placeholder="Blogger"
                type="text"
+               #websitename
                class="form-control">
         <p class="content-title">Website Description</p>
         <textarea type="text"
-                  class="form-control input-description" placeholder="Description" rows="5"></textarea>
+                  class="form-control input-description"
+                  #websitedescription
+                  placeholder="Description" rows="5"></textarea>
       </div>
     </div>
   </div>
 
   <!--Bottom Bar-->
   <div class="bottom">
-    <a (click)="toProfile()">
+    <a routerLink="/profile/{{userId}}">
       <button class="nav-btn glyphicon glyphicon-user pull-right"></button>
     </a>
   </div>

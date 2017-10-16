@@ -25,8 +25,10 @@ export class WebsiteService {
       if (this.websites[x]._id === userId ) {
         console.log('id exists');
         return;
+      }else {
+        this.websites.push(website);
+        return;
       }
-      this.websites.push(website);
     }
   }
 
@@ -39,15 +41,13 @@ export class WebsiteService {
   }
 
   findWebsitesByUser(userId) {
-    const sites = this.websites;
-    for (let x = 0; x < this.websites.length; x++) {
-      sites.pop();
-    }
+    const sites = [{}];
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x].developerId === userId ) {
         sites.push(this.websites[x]);
       }
     }
+    sites.splice(0, 1);
     return sites;
   }
 

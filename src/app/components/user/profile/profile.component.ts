@@ -19,21 +19,12 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute,
               private websiteService: WebsiteService, private router: Router) { }
 
-  findWebsite () {
-    const websites = this.websiteService.findWebsitesByUser(this.userId);
-    if (websites) {
-      for (const website of websites){
-        console.log(website.name);
-        this.router.navigate(['profile', this.userId, 'website']);
-      }
-    }
-  }
-
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
+          console.log(this.userId);
         }
       );
     this.user = this.userService.findUserById(this.userId);

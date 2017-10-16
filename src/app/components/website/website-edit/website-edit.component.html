@@ -16,7 +16,7 @@
               <p class="nav-p">Websites</p>
             </div>
             <div class="nav-left-right col-xs-2">
-              <a (click)="toNewWebsite()">
+              <a routerLink="/profile/{{userId}}/website/new">
                 <button class="glyphicon glyphicon-plus nav-plus" >
                 </button>
               </a>
@@ -29,7 +29,7 @@
               <p class="nav-p ">Edit Website</p>
             </div>
             <div class="col-xs-1  nav-right-right nav-ok">
-              <a (click)="toWebsiteList()">
+              <a routerLink="/profile/{{userId}}/website">
                 <button class="glyphicon glyphicon-ok btn-white">
                 </button>
               </a>
@@ -39,7 +39,7 @@
         <div class="col-12 visible-xs nav-full">
           <div class="row">
             <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
-              <a (click)="toWebsiteList()">
+              <a routerLink="/profile/{{userId}}/website">
                 <button class="glyphicon glyphicon-chevron-left nav-back" >
                 </button>
               </a>
@@ -48,7 +48,7 @@
               <p class="nav-p">Websites</p>
             </div>
             <div class="nav-left-right col-xs-2 nav-ok">
-              <button class="glyphicon glyphicon-ok nav-ok-btn" >
+              <button class="glyphicon glyphicon-ok nav-ok-btn" routerLink="/profile/{{userId}}/website">
               </button>
             </div>
           </div>
@@ -118,7 +118,7 @@
         <p class="content-title">Website Description</p>
         <textarea type="text"
                   class="form-control input-description" rows="5" placeholder="Description"></textarea>
-        <a class="btn btn-block btn-delete">Delete</a>
+        <a class="btn btn-block btn-delete" (click)="deleteWebsite()">Delete</a>
       </div>
     </div>
   </div>

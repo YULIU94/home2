@@ -11,6 +11,7 @@ export class WebsiteEditComponent implements OnInit {
 
   userId: String;
   websites = [{}];
+  websiteId: String;
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
@@ -41,11 +42,17 @@ export class WebsiteEditComponent implements OnInit {
     this.router.navigate(['profile', this.userId, 'website', 'new']);
   }
 
+  deleteWebsite() {
+    this._websiteService.deleteWebsite(this.websiteId);
+    this.router.navigate(['profile', this.userId, 'website']);
+  }
+
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
+          this.websiteId = params['wid'];
         }
       );
     this.websites = this._websiteService.findWebsitesByUser(this.userId);
