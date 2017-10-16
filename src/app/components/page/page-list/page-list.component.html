@@ -3,7 +3,7 @@
 <div class="page-nav container-fluid nav-container">
   <div class="row nav-row">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="../website/website-list.html" class="navbar-link">
+      <a (click)="toWebsiteList()" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
       </a>
     </div>
@@ -13,7 +13,7 @@
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="page-new.html" class="navbar-link">
+      <a (click)="toNewPage()" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-plus pull-right"></button>
       </a>
     </div>
@@ -24,7 +24,7 @@
 <div class="page-content">
   <ul class="page-ul">
     <li class="menu">
-      <a href="../widget/widget-list.html">
+      <a >
         <p class="pull-left menu-p">Blog Post</p>
       </a>
       <a href="page-edit.html">

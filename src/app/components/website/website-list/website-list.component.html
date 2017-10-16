@@ -63,11 +63,11 @@
       <!--</a>-->
     <!--</li>-->
   <!--</ul>-->
-  <div *ngFor="let website of websites">
-    <ul>
+  <div >
+    <ul *ngFor="let website of websites">
       <li class="menu">
         <button (click)="findPage(website)">
-          {{website.name}}
+          {{website['name']}}
         </button>
         <a (click)="findEditWebsite(website)" >
           <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>

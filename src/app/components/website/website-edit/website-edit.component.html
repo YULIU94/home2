@@ -7,7 +7,7 @@
         <div class="col-sm-4 col-md-4 col-lg-4 hidden-xs nav-left">
           <div class="row">
             <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
-              <a href="website-list.html">
+              <a (click)="toWebsiteList()">
                 <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn" >
                 </button>
               </a>
@@ -16,7 +16,7 @@
               <p class="nav-p">Websites</p>
             </div>
             <div class="nav-left-right col-xs-2">
-              <a href="website-new.html">
+              <a (click)="toNewWebsite()">
                 <button class="glyphicon glyphicon-plus nav-plus" >
                 </button>
               </a>
@@ -29,7 +29,7 @@
               <p class="nav-p ">Edit Website</p>
             </div>
             <div class="col-xs-1  nav-right-right nav-ok">
-              <a href="website-list.html">
+              <a (click)="toWebsiteList()">
                 <button class="glyphicon glyphicon-ok btn-white">
                 </button>
               </a>
@@ -39,7 +39,7 @@
         <div class="col-12 visible-xs nav-full">
           <div class="row">
             <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
-              <a href="website-list.html">
+              <a (click)="toWebsiteList()">
                 <button class="glyphicon glyphicon-chevron-left nav-back" >
                 </button>
               </a>
@@ -61,39 +61,49 @@
   <div class="content container-fluid">
     <div class="row">
       <div class="content-left hidden-xs col-sm-4 col-md-4 col-lg-4">
-        <div class="website-content">
+        <div class="website-content" *ngFor="let website of websites">
+          <!--<ul>-->
+            <!--<li class="menu">-->
+              <!--<div class="row">-->
+                <!--<a href="../page/page-list.html">-->
+                  <!--<p class="pull-left menu-p">Address Book App</p>-->
+                <!--</a>-->
+                <!--<a href="website-edit.html">-->
+                  <!--<span class="menu-btn pull-right glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--<li class="menu">-->
+              <!--<a href="../page/page-list.html">-->
+                <!--<p class="pull-left menu-p">Blogger</p>-->
+              <!--</a>-->
+              <!--<a href="website-edit.html">-->
+                <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+              <!--</a>-->
+            <!--</li>-->
+            <!--<li class="menu">-->
+              <!--<a href="../page/page-list.html">-->
+                <!--<p class="pull-left menu-p">Blogging App</p>-->
+              <!--</a>-->
+              <!--<a href="website-edit.html">-->
+                <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+              <!--</a>-->
+            <!--</li>-->
+            <!--<li class="menu">-->
+              <!--<a href="../page/page-list.html">-->
+                <!--<p class="pull-left menu-p">Script Testing App</p>-->
+              <!--</a>-->
+              <!--<a href="website-edit.html">-->
+                <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+              <!--</a>-->
+            <!--</li>-->
+          <!--</ul>-->
           <ul>
             <li class="menu">
-              <div class="row">
-                <a href="../page/page-list.html">
-                  <p class="pull-left menu-p">Address Book App</p>
-                </a>
-                <a href="website-edit.html">
-                  <span class="menu-btn pull-right glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
-            </li>
-            <li class="menu">
-              <a href="../page/page-list.html">
-                <p class="pull-left menu-p">Blogger</p>
-              </a>
-              <a href="website-edit.html">
-                <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
-              </a>
-            </li>
-            <li class="menu">
-              <a href="../page/page-list.html">
-                <p class="pull-left menu-p">Blogging App</p>
-              </a>
-              <a href="website-edit.html">
-                <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
-              </a>
-            </li>
-            <li class="menu">
-              <a href="../page/page-list.html">
-                <p class="pull-left menu-p">Script Testing App</p>
-              </a>
-              <a href="website-edit.html">
+              <button (click)="findPage(website)">
+                {{website['name']}}
+              </button>
+              <a (click)="findEditWebsite(website)" >
                 <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
               </a>
             </li>

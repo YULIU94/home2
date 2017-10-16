@@ -11,20 +11,20 @@ export class WebsiteListComponent implements OnInit {
 
   userId: String;
   websites = [{}];
+  websiteId: String;
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
   findPage(website) {
-    alert(website.websiteId);
     if (website) {
-      this.router.navigate(['profile', this.userId, 'website', website.websiteId, 'page']);
+      this.router.navigate(['profile', this.userId, 'website', website['_id'], 'page']);
     }
   }
 
   findEditWebsite(website) {
     if (website) {
-      this.router.navigate(['profile', this.userId, 'website', website.websiteId ]);
+      this.router.navigate(['profile', this.userId, 'website', website['_id'] ]);
     }
   }
 
