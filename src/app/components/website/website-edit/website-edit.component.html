@@ -1,0 +1,122 @@
+
+<div class="container-fluid">
+  <!--Nav Bar-->
+  <div class="nav-bar">
+    <div class="container-fluid nav-container">
+      <div class="row nav-row">
+        <div class="col-sm-4 col-md-4 col-lg-4 hidden-xs nav-left">
+          <div class="row">
+            <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
+              <a href="website-list.html">
+                <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn" >
+                </button>
+              </a>
+            </div>
+            <div class="nav-left-center col-xs-8">
+              <p class="nav-p">Websites</p>
+            </div>
+            <div class="nav-left-right col-xs-2">
+              <a href="website-new.html">
+                <button class="glyphicon glyphicon-plus nav-plus" >
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8 hidden-xs nav-right">
+          <div class="row">
+            <div class="col-xs-11 nav-right-left">
+              <p class="nav-p ">Edit Website</p>
+            </div>
+            <div class="col-xs-1  nav-right-right nav-ok">
+              <a href="website-list.html">
+                <button class="glyphicon glyphicon-ok btn-white">
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 visible-xs nav-full">
+          <div class="row">
+            <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
+              <a href="website-list.html">
+                <button class="glyphicon glyphicon-chevron-left nav-back" >
+                </button>
+              </a>
+            </div>
+            <div class="nav-left-center col-xs-8">
+              <p class="nav-p">Websites</p>
+            </div>
+            <div class="nav-left-right col-xs-2 nav-ok">
+              <button class="glyphicon glyphicon-ok nav-ok-btn" >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Contnet-->
+  <div class="content container-fluid">
+    <div class="row">
+      <div class="content-left hidden-xs col-sm-4 col-md-4 col-lg-4">
+        <div class="website-content">
+          <ul>
+            <li class="menu">
+              <div class="row">
+                <a href="../page/page-list.html">
+                  <p class="pull-left menu-p">Address Book App</p>
+                </a>
+                <a href="website-edit.html">
+                  <span class="menu-btn pull-right glyphicon glyphicon-cog"></span>
+                </a>
+              </div>
+            </li>
+            <li class="menu">
+              <a href="../page/page-list.html">
+                <p class="pull-left menu-p">Blogger</p>
+              </a>
+              <a href="website-edit.html">
+                <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
+              </a>
+            </li>
+            <li class="menu">
+              <a href="../page/page-list.html">
+                <p class="pull-left menu-p">Blogging App</p>
+              </a>
+              <a href="website-edit.html">
+                <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
+              </a>
+            </li>
+            <li class="menu">
+              <a href="../page/page-list.html">
+                <p class="pull-left menu-p">Script Testing App</p>
+              </a>
+              <a href="website-edit.html">
+                <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-right col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <p class="content-title">Website Name</p>
+        <input placeholder="Blogger"
+               type="text"
+               class="form-control">
+        <p class="content-title">Website Description</p>
+        <textarea type="text"
+                  class="form-control input-description" rows="5" placeholder="Description"></textarea>
+        <a class="btn btn-block btn-delete">Delete</a>
+      </div>
+    </div>
+  </div>
+
+  <!--Bottom Bar-->
+  <div class="bottom">
+    <button class="nav-btn glyphicon glyphicon-user pull-right">
+      <a (click)="toProfile()" class="navbar-link"></a>
+    </button>
+  </div>
+</div>

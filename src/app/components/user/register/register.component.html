@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Register</h1>
+  <input placeholder="username"
+         type="text"
+         name="username"
+         #username
+         class="form-control"/>
+  <br>
+  <input placeholder="password"
+         type="password"
+         name="password"
+         #password
+         class="form-control"/>
+  <input placeholder="verify password"
+         type="password"
+         name="verifypassword"
+         #verifypassword
+         class="form-control"/>
+  <br>
+  <a
+    (click)="registered(username.value, password.value, verifypassword.value)"
+    class="btn btn-primary btn-block"
+    >Register</a>
+
+  <a
+    routerLink="/login"
+    class="btn btn-danger btn-block"
+    routerLink="/login" >Cancel</a>
+
+</div>

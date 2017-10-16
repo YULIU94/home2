@@ -1,0 +1,85 @@
+
+<!--Navigation Bar-->
+<div class="nav-bar">
+  <div class="container-fluid nav-container">
+    <div class="row nav-row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nav-full">
+        <div class="row">
+          <div class="nav-left-left pull-left">
+            <a (click)="toProfile()">
+              <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn">
+              </button>
+            </a>
+          </div>
+          <div class="nav-left-center col-xs-10">
+            <p class="nav-p">Websites</p>
+          </div>
+          <div class="nav-left-right nav-ok pull-right" >
+            <a (click)="toNewWebsite()">
+              <button class="glyphicon glyphicon-plus nav-plus pull-right website-nav-btn" >
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Content-->
+<div class="content website-content">
+  <!--<ul>-->
+    <!--<li class="menu">-->
+      <!--<div class="row">-->
+        <!--<a href="../page/page-list.html">-->
+          <!--<p class="pull-left menu-p">Address Book App</p>-->
+        <!--</a>-->
+        <!--<a href="website-edit.html">-->
+          <!--<span class="menu-btn pull-right glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+      <!--</div>-->
+    <!--</li>-->
+    <!--<li class="menu">-->
+      <!--<a href="../page/page-list.html">-->
+        <!--<p class="pull-left menu-p">Blogger</p>-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="menu">-->
+      <!--<a href="../page/page-list.html">-->
+        <!--<p class="pull-left menu-p">Blogging App</p>-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="menu">-->
+      <!--<a href="../page/page-list.html">-->
+        <!--<p class="pull-left menu-p">Script Testing App</p>-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+      <!--</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+  <div *ngFor="let website of websites">
+    <ul>
+      <li class="menu">
+        <button (click)="findPage(website)">
+          {{website.name}}
+        </button>
+        <a (click)="findEditWebsite(website)" >
+          <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--Bottom Bar-->
+<div class="bottom">
+  <a (click)="toProfile()">
+    <button class="nav-btn glyphicon glyphicon-user pull-right"></button>
+  </a>
+</div>
