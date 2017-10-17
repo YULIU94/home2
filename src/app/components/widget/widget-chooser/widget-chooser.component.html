@@ -2,7 +2,7 @@
 <div class="page-nav container-fluid nav-container">
   <div class="row nav-row">
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 nav-row">
-      <a (click)="toWidgetList()" class="navbar-link">
+      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
       </a>
     </div>
@@ -72,7 +72,7 @@
 
 <!--Bottom Bar-->
 <div class="page-bottom">
-  <a (click)="toProfile()" class="navbar-link">
+  <a routerLink="/profile/{{userId}}" class="navbar-link">
     <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 </div>

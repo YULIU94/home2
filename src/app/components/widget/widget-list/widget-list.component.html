@@ -2,7 +2,7 @@
 <div class="page-nav container-fluid nav-container">
   <div class="row nav-row">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="../page/page-list.html" class="navbar-link">
+      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
       </a>
     </div>
@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a href="widget-chooser.html" class="navbar-link">
+      <a routerLink="new" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-plus pull-right"></button>
       </a>
     </div>
@@ -73,13 +73,13 @@
 <!--Bottom Bar-->
 <div class="page-bottom">
   <button class="widget-bottom-left-btn glyphicon glyphicon-play pull-left">
-    <a href="profile.html" class="navbar-link"></a>
+    <a routerLink="/profile/{{userId}}" class="navbar-link"></a>
   </button>
   <button class="widget-bottom-left-btn glyphicon glyphicon-eye-open pull-left">
-    <a href="profile.html" class="navbar-link"></a>
+    <a routerLink="/profile/{{userId}}" class="navbar-link"></a>
   </button>
 
-  <a href="../user/profile.html" class="navbar-link">
+  <a routerLink="/profile/{{userId}}" class="navbar-link">
     <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 

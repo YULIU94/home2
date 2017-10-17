@@ -7,7 +7,7 @@
         <div class="col-sm-4 col-md-4 col-lg-4 hidden-xs nav-left">
           <div class="row">
             <div class="nav-left-left pull-left col-xs-2 " href="website-ulist.html">
-              <a (click)="toWebsiteList()">
+              <a routerLink="/profile/{{userId}}/website">
                 <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn" >
                 </button>
               </a>
@@ -126,7 +126,7 @@
   <!--Bottom Bar-->
   <div class="bottom">
     <button class="nav-btn glyphicon glyphicon-user pull-right">
-      <a (click)="toProfile()" class="navbar-link"></a>
+      <a routerLink="/profile/{{userId}}" class="navbar-link"></a>
     </button>
   </div>
 </div>

@@ -18,27 +18,42 @@ export class PageService {
    createPage(websiteId, page) {
       page.websiteId = websiteId;
       this.pages.push(page);
+      console.log(this.pages);
     }
 
    findPageByWebsiteId(websiteId) {
     for (let i = 0; i < this.pages.length; i++) {
-      if (this.pages[i].websiteId = websiteId) {
+      if (this.pages[i].websiteId === websiteId) {
         return this.pages[i];
       }
     }
   }
 
+  findPagesByWebsiteId(websiteId) {
+    const pages = [{}];
+    for (let i = 0; i < this.pages.length; i++) {
+      if (this.pages[i].websiteId === websiteId) {
+        pages.push(this.pages[i]);
+
+      }
+    }
+    pages.splice(0, 1);
+    return pages;
+  }
+
    findPageById(pageId) {
      for (let i = 0; i < this.pages.length; i++) {
-       if (this.pages[i]._id = pageId) {
+       if (this.pages[i]._id === pageId) {
          return this.pages[i];
        }
      }
     }
 
    updatePage(pageId, page) {
+    console.log(pageId);
      for (let i = 0; i < this.pages.length; i++) {
-       if (this.pages[i]._id = pageId) {
+       if (this.pages[i]._id === pageId) {
+         console.log(this.pages[i]);
          this.pages[i] = page;
        }
      }
@@ -46,7 +61,7 @@ export class PageService {
 
    deletePage(pageId) {
      for (let i = 0; i < this.pages.length; i++) {
-       if (this.pages[i]._id = pageId) {
+       if (this.pages[i]._id === pageId) {
          this.pages.splice(i, 1);
        }
      }

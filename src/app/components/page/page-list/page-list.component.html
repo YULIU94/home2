@@ -3,7 +3,7 @@
 <div class="page-nav container-fluid nav-container">
   <div class="row nav-row">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a (click)="toWebsiteList()" class="navbar-link">
+      <a routerLink="/profile/{{userId}}/website" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
       </a>
     </div>
@@ -13,7 +13,7 @@
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a (click)="toNewPage()" class="navbar-link">
+      <a routerLink="new" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-plus pull-right"></button>
       </a>
     </div>
@@ -22,36 +22,47 @@
 
 <!--Content-->
 <div class="page-content">
-  <ul class="page-ul">
+  <!--<ul class="page-ul">-->
+    <!--<li class="menu">-->
+      <!--<a >-->
+        <!--<p class="pull-left menu-p">Blog Post</p>-->
+      <!--</a>-->
+      <!--<a href="page-edit.html">-->
+        <!--<span class="menu-btn pull-right glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="menu">-->
+      <!--<a href="../widget/widget-list.html">-->
+        <!--<p class="pull-left menu-p">Blogs</p>-->
+      <!--</a>-->
+      <!--<a href="page-edit.html">-->
+        <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="menu">-->
+      <!--<a href="../widget/widget-list.html">-->
+        <!--<p class="pull-left menu-p">Home</p>-->
+      <!--</a>-->
+      <!--<a href="page-edit.html">-->
+        <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="menu">-->
+      <!--<a href="../widget/widget-list.html">-->
+        <!--<p class="pull-left menu-p">About</p>-->
+      <!--</a>-->
+      <!--<a href="page-edit.html">-->
+        <!--<button class="menu-btn pull-right glyphicon glyphicon-cog"></button>-->
+      <!--</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+
+  <ul class="page-ul" *ngFor="let page of pages">
     <li class="menu">
-      <a >
-        <p class="pull-left menu-p">Blog Post</p>
+      <a routerLink="{{page['_id']}}/widget">
+        <p class="pull-left menu-p">{{page['name']}}</p>
       </a>
-      <a href="page-edit.html">
-        <span class="menu-btn pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="menu">
-      <a href="../widget/widget-list.html">
-        <p class="pull-left menu-p">Blogs</p>
-      </a>
-      <a href="page-edit.html">
-        <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
-      </a>
-    </li>
-    <li class="menu">
-      <a href="../widget/widget-list.html">
-        <p class="pull-left menu-p">Home</p>
-      </a>
-      <a href="page-edit.html">
-        <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
-      </a>
-    </li>
-    <li class="menu">
-      <a href="../widget/widget-list.html">
-        <p class="pull-left menu-p">About</p>
-      </a>
-      <a href="page-edit.html">
+      <a routerLink="{{page['_id']}}">
         <button class="menu-btn pull-right glyphicon glyphicon-cog"></button>
       </a>
     </li>
@@ -60,7 +71,7 @@
 
 <!--Bottom Bar-->
 <div class="page-bottom">
-  <a href="../user/profile.html" class="navbar-link">
+  <a routerLink="/profile/{{userId}}" class="navbar-link">
     <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 </div>
