@@ -45,7 +45,6 @@ export class WebsiteListComponent implements OnInit {
         }
       );
     this.websites = this._websiteService.findWebsitesByUser(this.userId);
-    console.log(this.websites);
   }
 
 }

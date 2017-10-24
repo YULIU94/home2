@@ -8,7 +8,7 @@ import {User} from '../models/user.model.client';
 export class UserService   {
   users: User[];
 
-  constructor() {
+  constructor(private http: Http) {
     this.users = [
       new User('123', 'alice', 'alice'),
       new User('234', 'bob', 'bob'),
@@ -23,36 +23,48 @@ export class UserService   {
     'findUserById' : this.findUserById
   };
 
-  createUser(user: any) {
-    user._id = Math.random();
+  createUser(user: User) {
+    user._id = Math.random().toString();
     this.users.push(user);
     return user;
   }
 
-  findUserById(userId: string) {
-    for (let x = 0; x < this.users.length; x++){
-      if (this.users[x]._id === userId) {
-        return this.users[x];
-      }
-    }
+  findUserById(userId: String) {
+    const url = 'http://localhost:3100/api/user/' + userId;
+    return this.http.get(url)
+      .map((response: Response ) => {
+        return response.json();
+      });
+    // for (let x = 0; x < this.users.length; x++){
+    //   if (this.users[x]._id === userId) {
+    //     return this.users[x];
+    //   }
+    // }
   }
 
   findUserByCredentials(username, password) {
-    console.log('service' + username);
-    console.log(password);
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x].username === username && this.users[x].password === password) {
-        return this.users[x];
-      }
-    }
+    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+
+    // for (let x = 0; x < this.users.length; x++) {
+    //   if (this.users[x].username === username && this.users[x].password === password) {
+    //     return this.users[x];
+    //   }
+    // }
   }
 
   findUserByUsername(username: string) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x].username === username) {
-        return this.users[x];
-      }
-    }
+    // this.http.get("/api/user?username="+username).subscribe();
+
+
+    // for (let x = 0; x < this.users.length; x++) {
+    //   if (this.users[x].username === username) {
+    //     return this.users[x];
+    //   }
+    // }
   }
 
   updateUser(userId, user) {

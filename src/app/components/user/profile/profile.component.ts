@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import { WebsiteService } from '../../../services/website.service.client';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   userId: string;
   user = {};
-  username: string;
+  username: String;
 
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute,
@@ -27,8 +28,13 @@ export class ProfileComponent implements OnInit {
           console.log(this.userId);
         }
       );
-    this.user = this.userService.findUserById(this.userId);
-    this.username = this.user['username'];
+    // this.user = this.userService.findUserById(this.userId);
+    this.userService.findUserById(this.userId)
+      .subscribe((user: User) => {
+        this.user = user;
+        this.userId = user._id.toString();
+        this.username = user.username;
+      });
   }
 
 }

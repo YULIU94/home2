@@ -25,6 +25,8 @@ import {WebsiteService} from './services/website.service.client';
 import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 
+import {HttpModule} from '@angular/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import {WidgetService} from './services/widget.service.client';
   imports: [
     BrowserModule,
     FormsModule,
-    Routing
+    Routing,
+    HttpModule
   ],
   providers: [
     UserService, WebsiteService, PageService, WidgetService
