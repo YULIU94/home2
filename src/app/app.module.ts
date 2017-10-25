@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -6,7 +6,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
 
-import { Routing } from './app.routing';
+
 import { PageNewComponent } from './components/page/page-new/page-new.component';
 import { PageEditComponent } from './components/page/page-edit/page-edit.component';
 import { PageListComponent } from './components/page/page-list/page-list.component';
@@ -19,13 +19,23 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+
+// import
+import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import { Routing } from './app.routing';
+
+// providers
 import {UserService} from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 
-import {HttpModule} from '@angular/http';
+import {Widget} from './models/widget.model.client';
+import { WidgetHeadingComponent } from './components/widget/widget-heading/widget-heading/widget-heading.component';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +54,8 @@ import {HttpModule} from '@angular/http';
     WidgetListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    WidgetHeadingComponent
   ],
   imports: [
     BrowserModule,

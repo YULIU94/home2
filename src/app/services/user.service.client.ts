@@ -9,12 +9,12 @@ export class UserService   {
   users: User[];
 
   constructor(private http: Http) {
-    this.users = [
-      new User('123', 'alice', 'alice'),
-      new User('234', 'bob', 'bob'),
-      new User('345', 'charlie', 'charlie'),
-      new User('456', 'jannunzi', 'jannunzi')
-    ];
+    // this.users = [
+    //   new User('123', 'alice', 'alice'),
+    //   new User('234', 'bob', 'bob'),
+    //   new User('345', 'charlie', 'charlie'),
+    //   new User('456', 'jannunzi', 'jannunzi')
+    // ];
   }
 
 

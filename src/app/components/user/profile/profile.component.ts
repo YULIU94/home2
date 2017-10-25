@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
-          console.log(this.userId);
         }
       );
     // this.user = this.userService.findUserById(this.userId);

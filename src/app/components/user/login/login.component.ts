@@ -14,6 +14,7 @@ import {isUndefined} from 'util';
 })
 export class LoginComponent implements OnInit {
 
+  user: User;
   username: string;
   password: string;
   errorFlag: boolean;
@@ -25,22 +26,32 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   // function: login
-  login(username: string, password: string) {
-    if (username.length === 0 || password.length === 0) {
-      alert('missed username or password');
-    } else {
+  login(username: String, password: String) {
+    // if (username.length === 0 || password.length === 0) {
+    //   alert('missed username or password');
+    // } else {
       // const user: User = this.userService.findUserByCredentials(username, password);
       this.userService.findUserByCredentials(username, password)
         .subscribe((user: User) => {
+
+        // ???
+        //   if (user) {
+        //     this.router.navigate(['profile', user._id]);
+        //     return;
+        //   }
           if (user) {
-            this.router.navigate(['profile', user._id]);
+            this.user = user;
+          }
+          if (this.user) {
+            this.router.navigate(['profile', this.user._id]);
+            return;
           } else {
             this.errorFlag = true;
             this.errorMsg = 'Error';
             alert('wrong username or password');
           }
         });
-    }
+    // }
   }
 
   ngOnInit() {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PageService} from '../../../services/page.service.client';
+import { WidgetService } from '../../../services/widget.service.client';
+import {Widget} from '../../../models/widget.model.client';
 
 @Component({
   selector: 'app-widget-list',
@@ -11,14 +13,16 @@ import {PageService} from '../../../services/page.service.client';
 export class WidgetListComponent implements OnInit {
 
   userId: String;
-  websites = [{}];
   websiteId: String;
-  pages = [{}];
+  pageId: String;
 
-  constructor(private _websiteService: WebsiteService,
-              private _pageService: PageService,
+  widgets: Widget[];
+
+  constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
+
+
 
   ngOnInit() {
     this.activatedRoute.params
@@ -26,9 +30,15 @@ export class WidgetListComponent implements OnInit {
         (params: any) => {
           this.userId = params['userId'];
           this.websiteId = params['wid'];
+          this.pageId = params['pid'];
+          console.log(params);
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
-    this.pages = this._pageService.findPagesByWebsiteId(this.websiteId);
+
+    // this.widgets = this.widgetService.findAllWidgets();
+    this.widgetService.findAllWidgets()
+      .subscribe((widgets: Widget[]) => {
+        this.widgets = widgets;
+      });
   }
 }
