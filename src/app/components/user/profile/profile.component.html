@@ -12,7 +12,8 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a class="navbar-link" (click)="updateUser(email.value, firstname.value, lastname.value)">
+      <a class="navbar-link"
+         (click)="updateUser(email.value, firstname.value, lastname.value)">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </p>
@@ -37,27 +38,29 @@
   <form>
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" #email id="email" >
+      <input type="email" class="form-control" #email id="email" placeholder="username@hotmail.com">
     </div>
   </form>
 
   <form>
     <div class="form-group">
       <label for="first-name">First Name</label>
-      <input type="text" class="form-control" #firstname id="first-name" >
+      <input type="text" class="form-control" #firstname id="first-name" placeholder="firstname">
     </div>
   </form>
 
   <form>
     <div class="form-group">
       <label for="last-name">Last Name</label>
-      <input type="text" class="form-control" #lastname id="last-name" >
+      <input type="text" class="form-control" #lastname id="last-name" placeholder="lastname">
     </div>
   </form>
   <a class="btn btn-primary btn-block"
      routerLink="website">Websites</a>
   <a class="btn btn-danger btn-block "
      routerLink="/login">Logout</a>
+  <a class="btn btn-danger btn-block "
+     (click)="deleteUser()">Delete User</a>
 
 </div>
 

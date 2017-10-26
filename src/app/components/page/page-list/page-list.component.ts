@@ -12,12 +12,10 @@ import {PageService} from '../../../services/page.service.client';
 export class PageListComponent implements OnInit {
 
   userId: String;
-  websites = [{}];
   websiteId: String;
   pages = [{}];
 
-  constructor(private _websiteService: WebsiteService,
-              private _pageService: PageService,
+  constructor(private _pageService: PageService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
@@ -29,7 +27,10 @@ export class PageListComponent implements OnInit {
           this.websiteId = params['wid'];
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
-    this.pages = this._pageService.findPagesByWebsiteId(this.websiteId);
+    this._pageService.findAllPagesForWebsite(this.websiteId)
+      .subscribe((pages) => {
+        this.pages = pages;
+        console.log(pages);
+      });
   }
 }

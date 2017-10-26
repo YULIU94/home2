@@ -1,7 +1,7 @@
 export class User {
   _id: String;
   username: String;
-  private _password: String;
+  private password: String;
   firstname: String;
   lastname: String;
   email: String;
@@ -15,7 +15,7 @@ export class User {
   constructor(_id, username, password) {
     this._id = _id;
     this.username = username;
-    this._password = password;
+    this.password = password;
   }
 
 

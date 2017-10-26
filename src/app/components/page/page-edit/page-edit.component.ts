@@ -11,25 +11,27 @@ import {PageService} from '../../../services/page.service.client';
 export class PageEditComponent implements OnInit {
 
   userId: String;
-  websites = [{}];
   websiteId: String;
   pages = [{}];
   pageId: String;
 
-  constructor(private _websiteService: WebsiteService,
-              private _pageService: PageService,
+  constructor(private _pageService: PageService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
   updatePage(pagename, pagetitle) {
-    const page = this._pageService.findPageById(this.pageId);
-    page['name'] = pagename;
-
-    this._pageService.updatePage(this.pageId, page);
+    const page = { '_id': this.pageId, 'name': pagename, 'websiteId': this.websiteId, 'description': ''};
+    this._pageService.updatePage(this.pageId, page)
+      .subscribe((newpage) => {
+        this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page']);
+      });
   }
 
   deletePage() {
-    this._pageService.deletePage(this.pageId);
+    this._pageService.deletePage(this.pageId)
+      .subscribe((newpage) => {
+        this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page']);
+      });
   }
 
   ngOnInit() {
@@ -41,7 +43,10 @@ export class PageEditComponent implements OnInit {
           this.pageId = params['pid'];
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
-    this.pages = this._pageService.findPagesByWebsiteId(this.websiteId);
+    this._pageService.findAllPagesForWebsite(this.websiteId)
+      .subscribe((pages) => {
+        this.pages = pages;
+        console.log(pages);
+      });
   }
 }

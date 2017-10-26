@@ -13,9 +13,9 @@
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page" class="navbar-link">
+      <a>
         <button
-          (click)="savePage(pagename.value, pagetitle.value)"
+          (click)="createPage(pagename.value, pagetitle.value)"
           class="page-nav-btn glyphicon glyphicon-ok pull-right"></button>
       </a>
     </div>

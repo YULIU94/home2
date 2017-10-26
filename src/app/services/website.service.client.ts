@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
 import {WEBSITES} from './website.mock.client';
-import {Website} from "../models/website.model.client";
+import {Website} from '../models/website.model.client';
 
 @Injectable()
 export class WebsiteService {
@@ -13,6 +13,14 @@ export class WebsiteService {
   }
 
   websites = WEBSITES;
+
+  createWebsite(userId, website) {
+    const url = 'http://localhost:3100/api/user/' + userId + '/website';
+    return this.http.post(url, website)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 
   findWebsitesForUser(userId: String) {
     const url = 'http://localhost:3100/api/user/' + userId + '/website';
@@ -32,13 +40,7 @@ export class WebsiteService {
       );
   }
 
-  createWebsite(userId, website) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website';
-    return this.http.post(url, website)
-      .map((response: Response) => {
-        return response.json();
-      });
-  }
+
 
   findWebsiteByUser(userId) {
     for (let x = 0; x < this.websites.length; x++) {

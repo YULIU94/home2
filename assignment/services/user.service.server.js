@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.get('/api/user', findUserByCredentials);
   app.get('/api/user/:userId', findUserById);
   app.put('/api/user/:userId', updateUser);
-  // app.delete('/api/user/:userId', deleteUser);
+  app.delete('/api/user/:userId', deleteUser);
 
 
   const USERS = require('./user.mock.server');
@@ -69,25 +69,32 @@ module.exports = function (app) {
     const password = req.params['password'];
 
     const id_new = (new Date().getTime()).toString();
-    const user = {_id: id_new, username: username, email: "", password: password, firstname: "", lastName: ""};
+    const user = req.body;
+    user._id = id_new;
+    console.log(USERS.length);
     USERS.push(user);
+    console.log(USERS.length);
+    console.log(USERS);
     res.json(user);
   }
 
   function findUserByCredentials(req, res) {
     const username = req.query['username'];
     const password = req.query['password'];
-    console.log(username);
+
+    console.log('username');
+    console.log('password');
+    console.log(USERS);
 
     if (username && password) {
-      const user = USERS.find(function (user) {
-        return user.username === username && user.password === password;
-      });
-      if (user){
-        res.json(user);
-      } else {
-        res.json(null);
+      for (let i=0; i<USERS.length; i++){
+        if (USERS[i].username === username && USERS[i].password === password){
+          console.log('find user');
+          console.log(USERS[i]);
+          res.json(USERS[i]);
+        }
       }
+        res.json(null);
     }else if(username){
       const user = USERS.find(function (user) {
         return user.username === username;
@@ -97,6 +104,8 @@ module.exports = function (app) {
       } else {
         res.json(null);
       }
+    }else{
+      res.json(null);
     }
   }
 
@@ -112,4 +121,51 @@ module.exports = function (app) {
       }
     }
   }
+
+  function deleteUser(req, res) {
+    var userId = req.params['userId'];
+
+    for (let x = 0; x < USERS.length; x++) {
+      if (USERS[x]._id === userId ) {
+        USERS.splice(x, 1);
+        console.log(USERS);
+        res.json(null);
+        return;
+      }
+    }
+  }
 };
+
+
+// function findUserByCredentials(req, res) {
+//   const username = req.query['username'];
+//   const password = req.query['password'];
+//
+//   if (username && password) {
+//     for (let i=0; i<USERS.length; i++){
+//       if (USERS[i].username === username && USERS[i].password === password){
+//         const user = USERS[i];
+//         console.log('find user');
+//         console.log(user);
+//         if (user){
+//           res.json(user);
+//         } else {
+//           res.json(null);
+//         }
+//       }
+//     }
+//   }else if(username){
+//     if (USERS[i].username === username){
+//       const user = USERS[i];
+//       console.log('find user');
+//       console.log(user);
+//       if (user){
+//         res.json(user);
+//       } else {
+//         res.json(null);
+//       }
+//     }
+//   }else{
+//     res.json(null);
+//   }
+// }

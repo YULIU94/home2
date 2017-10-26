@@ -34,6 +34,13 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  deleteUser() {
+    this.userService.deleteUser(this.userId)
+      .subscribe((user) => {
+        this.router.navigate(['login']);
+      });
+  }
+
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(

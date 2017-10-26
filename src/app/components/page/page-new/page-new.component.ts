@@ -11,7 +11,6 @@ import {PageService} from '../../../services/page.service.client';
 export class PageNewComponent implements OnInit {
 
   userId: String;
-  websites = [{}];
   websiteId: String;
   pages = [{}];
 
@@ -20,13 +19,12 @@ export class PageNewComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
-  savePage(pagename, pagetitle) {
-    this.pages = this._pageService.findPagesByWebsiteId(this.websiteId);
-    const page = { '_id': '321', 'name': 'Post 1', 'websiteId': '456', 'description': 'new' };
-    const pageId = Math.random().toString();
-    page['_id'] = pageId;
-    page['name'] = pagename;
-    this._pageService.createPage(this.websiteId, page);
+  createPage(pagename, pagetitle) {
+    const page = { '_id': '321', 'name': pagename, 'websiteId': this.websiteId, 'description': 'new' };
+    this._pageService.createPage(this.websiteId, page)
+      .subscribe((pages) => {
+        this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page']);
+      });
   }
 
   ngOnInit() {
@@ -37,7 +35,10 @@ export class PageNewComponent implements OnInit {
           this.websiteId = params['wid'];
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
-    this.pages = this._pageService.findPagesByWebsiteId(this.websiteId);
+    this._pageService.findAllPagesForWebsite(this.websiteId)
+      .subscribe((pages) => {
+        this.pages = pages;
+        console.log(pages);
+      });
   }
 }
