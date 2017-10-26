@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {WidgetService} from '../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-edit',
@@ -10,17 +11,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class WidgetEditComponent implements OnInit {
 
   userId: String;
+  websiteId: String;
+  pageId: String;
+  widgetId: String;
 
 
-  constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
+  constructor(private widgetService: WidgetService,
+              private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
-  toWebsiteList( ) {
-    this.router.navigate(['profile', this.userId, 'website']);
-  }
-
-  toProfile() {
-    this.router.navigate(['profile', this.userId]);
+  createWidget(type, size, text, src) {
+    const widget = {'_id': '', 'type': type, 'size': size, 'text': text, 'src': src, pageId: this.pageId};
+    this.widgetService.createWidget(this.pageId, widget)
+      .subscribe((pages) => {
+        this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page']);
+      });
   }
 
   ngOnInit() {
@@ -28,6 +33,9 @@ export class WidgetEditComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
+          this.websiteId = params['wid'];
+          this.pageId = params['pid'];
+          this.widgetId = params['wgid'];
         }
       );
   }

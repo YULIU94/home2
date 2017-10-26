@@ -1,3 +1,66 @@
-<!--<div [ngSwitch]="widget.type">-->
+<!--Nav Bar-->
+<div class="page-nav container-fluid nav-container">
+  <div class="row nav-row">
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 nav-row">
+      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="navbar-link">
+        <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
+      </a>
+    </div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 nav-row">
+      <p class="page-nav-p pull-left">
+        <b>Choose Widget</b>
+      </p>
+    </div>
+  </div>
+</div>
 
-<!--</div>-->
+<!--Content-->
+<div class="widget-content">
+  <ul class="widget-ul">
+    <li class="widget-li">
+      <label>type</label>
+      <input
+        placeholder="type"
+        type="text"
+        class="form-control"
+        #type/>
+    </li>
+    <li class="widget-li">
+      <label>size</label>
+      <input
+        placeholder="size"
+        type="text"
+        class="form-control"
+        #size/>
+    </li>
+    <li class="widget-li">
+      <label>text</label>
+      <input
+        placeholder="text"
+        type="text"
+        class="form-control"
+        #text/>
+    </li>
+    <li class="widget-li">
+      <label>src</label>
+      <input
+        placeholder="src"
+        type="text"
+        class="form-control"
+        #src/>
+    </li>
+    <li class="widget-li">
+      <button class="btn btn-primary btn-block"
+              (click)="createWidget(type.value, size.value, text.value, src.value)">
+        Edit
+      </button>
+    </li>
+  </ul>
+</div>
+
+<!--Bottom Bar-->
+<div class="page-bottom">
+  <a routerLink="/profile/{{userId}}" class="navbar-link">
+    <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
+  </a>
+</div>

@@ -15,14 +15,11 @@ export class WidgetListComponent implements OnInit {
   userId: String;
   websiteId: String;
   pageId: String;
-
   widgets: Widget[];
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
-
-
 
   ngOnInit() {
     this.activatedRoute.params
@@ -35,10 +32,7 @@ export class WidgetListComponent implements OnInit {
         }
       );
 
-    // this.widgets = this.widgetService.findAllWidgets();
-    // ???
-    // this.widgets =
-    this.widgetService.findAllWidgets()
+    this.widgetService.findAllwidgetsForPage(this.pageId)
       .subscribe((widgets: Widget[]) => {
         this.widgets = widgets;
       });

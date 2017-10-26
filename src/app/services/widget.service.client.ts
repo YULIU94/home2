@@ -8,56 +8,48 @@ import {WIDGETS} from '../models/widget.mock.client';
 @Injectable()
 export class WidgetService {
 
-
+  widgets = [];
   constructor(private http: Http) {
   }
 
-
-  widgets = [];
-
-  findAllWidgets() {
-    // return this.widgets;
-    return this.http.get('http://localhost:3100/api/widget')
-      .map((response: Response) => {
-        return response.json();
-      });
-  }
-
    createWidget(pageId, widget) {
-    widget.pageId = pageId;
-    this.widgets.push(widget);
+     const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+     return this.http.post(url, widget)
+       .map((response: Response) => {
+         return response.json();
+       });
   }
 
-   findWidgetsByPageId(pageId) {
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x].pageId = pageId) {
-        return this.widgets[x];
-      }
-    }
+   findAllwidgetsForPage(pageId) {
+     const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+     return this.http.get(url)
+       .map((response: Response) => {
+         return response.json();
+       });
   }
 
    findWidgetById(widgetId) {
-     for (let x = 0; x < this.widgets.length; x++) {
-       if (this.widgets[x]._id = widgetId) {
-         return this.widgets[x];
-       }
-     }
+     const url = 'http://localhost:3100/api/widget/' + widgetId;
+     return this.http.get(url)
+       .map((response: Response) => {
+         return response.json();
+       });
   }
 
    updateWidget(widgetId, widget) {
-     for (let x = 0; x < this.widgets.length; x++) {
-       if (this.widgets[x]._id = widgetId) {
-         this.widgets[x] = widget;
-       }
-     }
+     const url = 'http://localhost:3100/api/widget/' + widgetId;
+     return this.http.put(url, widget)
+       .map((response: Response) => {
+         return response.json();
+       });
   }
 
    deleteWidget(widgetId) {
-     for (let x = 0; x < this.widgets.length; x++) {
-       if (this.widgets[x]._id = widgetId) {
-         this.widgets.splice(x, 1);
-       }
-     }
+     const url = 'http://localhost:3100/api/widget/' + widgetId;
+     return this.http.delete(url)
+       .map((response: Response) => {
+         return response.json();
+       });
   }
 
 }
