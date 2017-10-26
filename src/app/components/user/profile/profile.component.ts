@@ -23,13 +23,14 @@ export class ProfileComponent implements OnInit {
   updateUser(email: String, firstName: String, lastName: String) {
     const newUser = this.user;
 
-    newUser.firstName = firstName;
-    newUser.lastName = lastName;
+    newUser.firstname = firstName;
+    newUser.lastname = lastName;
     newUser.email = email;
 
     this.userService.updateUser(this.userId, newUser)
       .subscribe((user) => {
         this.user = user;
+        console.log(user);
       });
   }
 
@@ -43,8 +44,8 @@ export class ProfileComponent implements OnInit {
     // this.user = this.userService.findUserById(this.userId);
     this.userService.findUserById(this.userId)
       .subscribe((user: User) => {
+        console.log(user);
         this.user = user;
-        this.userId = user._id.toString();
         this.username = user.username;
       });
   }

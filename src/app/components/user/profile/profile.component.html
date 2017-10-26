@@ -12,7 +12,7 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a class="navbar-link">
+      <a class="navbar-link" (click)="updateUser(email.value, firstname.value, lastname.value)">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </p>
@@ -37,21 +37,21 @@
   <form>
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" placeholder="alice.wonderland@unicorn.com">
+      <input type="email" class="form-control" #email id="email" >
     </div>
   </form>
 
   <form>
     <div class="form-group">
       <label for="first-name">First Name</label>
-      <input type="text" class="form-control" id="first-name" placeholder="Alice">
+      <input type="text" class="form-control" #firstname id="first-name" >
     </div>
   </form>
 
   <form>
     <div class="form-group">
       <label for="last-name">Last Name</label>
-      <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+      <input type="text" class="form-control" #lastname id="last-name" >
     </div>
   </form>
   <a class="btn btn-primary btn-block"

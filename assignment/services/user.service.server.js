@@ -1,14 +1,13 @@
 module.exports = function (app) {
   app.post('/api/user', createUser);
-  app.get('/api/user/:userId', findUserById);
   // app.get('/api/user', findUserByUsername);
   app.get('/api/user', findUserByCredentials);
   app.get('/api/user/:userId', findUserById);
-  // app.put('/api/user/:userId', updateUser);
+  app.put('/api/user/:userId', updateUser);
   // app.delete('/api/user/:userId', deleteUser);
 
 
-  const users = require('./user.mock.server');
+  const USERS = require('./user.mock.server');
 
   function findUsers(req, res) {
     const username = req.query['username'];
@@ -38,7 +37,7 @@ module.exports = function (app) {
 
   function findUserById(req, res) {
     const userId = req.params["userId"];
-    const user = users.find(function (user) {
+    const user = USERS.find(function (user) {
       return user._id === userId;
     });
     res.json(user);
@@ -53,14 +52,14 @@ module.exports = function (app) {
       var user = findUserByUsername(username);
       res.json(user);
     } else {
-      res.json(users);
+      res.json(null);
     }
   }
 
   function findUserByUsername(username) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (users[x].username === username) {
-        res.json(users[x]);
+    for (let x = 0; x < this.USERS.length; x++) {
+      if (USERS[x].username === username) {
+        res.json(USERS[x]);
       }
     }
   }
@@ -71,7 +70,7 @@ module.exports = function (app) {
 
     const id_new = (new Date().getTime()).toString();
     const user = {_id: id_new, username: username, email: "", password: password, firstname: "", lastName: ""};
-    users.push(user);
+    USERS.push(user);
     res.json(user);
   }
 
@@ -81,7 +80,7 @@ module.exports = function (app) {
     console.log(username);
 
     if (username && password) {
-      const user = users.find(function (user) {
+      const user = USERS.find(function (user) {
         return user.username === username && user.password === password;
       });
       if (user){
@@ -90,13 +89,26 @@ module.exports = function (app) {
         res.json(null);
       }
     }else if(username){
-      const user = users.find(function (user) {
+      const user = USERS.find(function (user) {
         return user.username === username;
       });
       if (user){
         res.json(user);
       } else {
         res.json(null);
+      }
+    }
+  }
+
+  function updateUser(req, res) {
+    var userId = req.params['userId'];
+    var newUser = req.body;
+
+    for (let x = 0; x < USERS.length; x++) {
+      if (USERS[x]._id === userId ) {
+        USERS[x] = newUser;
+        res.json(newUser);
+        return;
       }
     }
   }

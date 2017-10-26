@@ -69,12 +69,13 @@ export class UserService   {
     //     this.users[x] = user;
     //   }
     // }
-    const url = 'http://localhost:3100/api/user/:userId';
+    const url = 'http://localhost:3100/api/user/' + userId;
     return this.http.put(url, user)
       .map((response: Response) => {
         return response.json();
       });
   }
+
   deleteUser(userId) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {

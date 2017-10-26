@@ -2,8 +2,8 @@ export class User {
   _id: String;
   username: String;
   private _password: String;
-  firstName: String;
-  lastName: String;
+  firstname: String;
+  lastname: String;
   email: String;
   // address; string;
   // constructor(_id, username, password) {
