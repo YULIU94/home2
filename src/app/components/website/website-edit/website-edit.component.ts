@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -12,39 +13,28 @@ export class WebsiteEditComponent implements OnInit {
   userId: String;
   websites = [{}];
   websiteId: String;
+  website: Website;
+  websiteName: String
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
-  findPage(website) {
-    console.log(this.websites);
-    console.log(website['_id']);
-    if (website) {
-      this.router.navigate(['profile', this.userId, 'website', website['_id'], 'page']);
-    }
-  }
 
-  findEditWebsite(website) {
-    if (website) {
-      this.router.navigate(['profile', this.userId, 'website', website['_id'] ]);
-    }
-  }
 
-  toWebsiteList( ) {
-    this.router.navigate(['profile', this.userId, 'website']);
-  }
-
-  toProfile() {
-    this.router.navigate(['profile', this.userId]);
-  }
-
-  toNewWebsite() {
-    this.router.navigate(['profile', this.userId, 'website', 'new']);
+  updateWebsite(name: String, description: String) {
+    const newWebsite = new Website(this.website._id, name, this.website.developerId, description);
+    this._websiteService.updateWebsite(this.userId, newWebsite)
+      .subscribe((websites) => {
+        this.websites = websites;
+        this.router.navigate(['profile', this.userId, 'website']);
+      });
   }
 
   deleteWebsite() {
-    this._websiteService.deleteWebsite(this.websiteId);
-    this.router.navigate(['profile', this.userId, 'website']);
+    this._websiteService.deleteWebsite(this.userId, this.websiteId)
+      .subscribe((website) => {
+        this.router.navigate(['profile', this.userId, 'website']);
+      });
   }
 
   ngOnInit() {
@@ -56,6 +46,24 @@ export class WebsiteEditComponent implements OnInit {
         }
       );
     this.websites = this._websiteService.findWebsitesByUser(this.userId);
+    this._websiteService.findWebsiteById(this.userId, this.websiteId)
+      .subscribe((website) => {
+        this.website = website;
+      });
   }
-
 }
+
+
+// findPage(website) {
+//   console.log(this.websites);
+//   console.log(website['_id']);
+//   if (website) {
+//     this.router.navigate(['profile', this.userId, 'website', website['_id'], 'page']);
+//   }
+// }
+//
+// findEditWebsite(website) {
+//   if (website) {
+//     this.router.navigate(['profile', this.userId, 'website', website['_id'] ]);
+//   }
+// }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-website-new',
@@ -14,6 +15,15 @@ export class WebsiteNewComponent implements OnInit {
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
+
+  createWebsite(websitename, websitedescription) {
+    const website: Website = new Website('', websitename, this.userId, websitedescription);
+    this._websiteService.createWebsite(this.userId, website)
+      .subscribe((websites) => {
+        // this.websites = websites;
+        this.router.navigate(['profile', this.userId, 'website']);
+      });
+  }
 
   findPage(website) {
     console.log(this.websites);

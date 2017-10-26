@@ -29,8 +29,9 @@
               <p class="nav-p ">Edit Website</p>
             </div>
             <div class="col-xs-1  nav-right-right nav-ok">
-              <a routerLink="/profile/{{userId}}/website">
-                <button class="glyphicon glyphicon-ok btn-white">
+              <a>
+                <button class="glyphicon glyphicon-ok btn-white"
+                        (click)="createWebsite(websitename.value, websitedescription.toString())">
                 </button>
               </a>
             </div>
@@ -48,10 +49,10 @@
               <p class="nav-p">Websites</p>
             </div>
             <div class="nav-left-right col-xs-2 nav-ok">
+              <!--(click)="saveNewWebsite(websitename.value, websitedescription)"-->
               <button
-                (click)="saveNewWebsite(websitename.value, websitedescription)"
-                class="glyphicon glyphicon-ok nav-ok-btn"
-                 routerLink="/profile/{{userId}}/website">
+                (click)="createWebsite(websitename.value, websitedescription.toString())"
+                 class="glyphicon glyphicon-ok nav-ok-btn">
               </button>
             </div>
           </div>

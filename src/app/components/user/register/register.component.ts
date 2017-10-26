@@ -27,8 +27,10 @@ export class RegisterComponent implements OnInit {
         // randomly assign userid
         const user_id_new = Math.random();
         const newUser: User = new User(user_id_new, username, password);
-        this.userService.createUser(newUser);
-        this.router.navigate(['/login']);
+        this.userService.createUser(newUser)
+          .subscribe((user) => {
+            this.router.navigate(['/login']);
+          });
       }
     }
   }

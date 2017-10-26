@@ -36,6 +36,8 @@ export class WidgetListComponent implements OnInit {
       );
 
     // this.widgets = this.widgetService.findAllWidgets();
+    // ???
+    // this.widgets =
     this.widgetService.findAllWidgets()
       .subscribe((widgets: Widget[]) => {
         this.widgets = widgets;

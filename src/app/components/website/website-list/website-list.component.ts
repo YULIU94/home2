@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-website-list',
@@ -10,8 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class WebsiteListComponent implements OnInit {
 
   userId: String;
-  websites = [{}];
+  websites = [];
   websiteId: String;
+  websiteName: String;
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
@@ -28,12 +30,18 @@ export class WebsiteListComponent implements OnInit {
     }
   }
 
-  toProfile() {
-    this.router.navigate(['profile', this.userId]);
+  selectWebsite(websiteId: String) {
+    this._websiteService.findWebsiteById(this.userId, websiteId)
+      .subscribe((website) => {
+        this.websiteName = website.name;
+      });
   }
 
-  toNewWebsite() {
-    this.router.navigate(['profile', this.userId, 'website', 'new']);
+  deleteWebsite(websiteId: String) {
+    this._websiteService.deleteWebsite(this.userId, websiteId)
+      .subscribe((websites) => {
+        this.websites = websites;
+      });
   }
 
   ngOnInit() {
@@ -44,7 +52,12 @@ export class WebsiteListComponent implements OnInit {
           console.log(params);
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
+
+    this._websiteService.findWebsitesForUser(this.userId)
+      .subscribe((websites) => {
+        this.websites = websites;
+        console.log(this.websites);
+      });
   }
 
 }

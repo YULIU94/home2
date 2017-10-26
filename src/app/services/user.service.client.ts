@@ -24,9 +24,11 @@ export class UserService   {
   };
 
   createUser(user: User) {
-    user._id = Math.random().toString();
-    this.users.push(user);
-    return user;
+    const url = 'http://localhost:3100/api/user';
+    return this.http.post(url, user)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findUserById(userId: String) {
@@ -48,12 +50,6 @@ export class UserService   {
       .map((response: Response) => {
         return response.json();
       });
-
-    // for (let x = 0; x < this.users.length; x++) {
-    //   if (this.users[x].username === username && this.users[x].password === password) {
-    //     return this.users[x];
-    //   }
-    // }
   }
 
   findUserByUsername(username: string) {
@@ -68,11 +64,16 @@ export class UserService   {
   }
 
   updateUser(userId, user) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        this.users[x] = user;
-      }
-    }
+    // for (let x = 0; x < this.users.length; x++) {
+    //   if (this.users[x]._id === userId) {
+    //     this.users[x] = user;
+    //   }
+    // }
+    const url = 'http://localhost:3100/api/user/:userId';
+    return this.http.put(url, user)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
   deleteUser(userId) {
     for (let x = 0; x < this.users.length; x++) {

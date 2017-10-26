@@ -6,7 +6,7 @@
 
   <h1>Login</h1>
 
-  <form (ngSubmit) = "login()" #f="ngForm">
+  <form #f="ngForm">
 
     <input
       placeholder="username"
@@ -19,7 +19,8 @@
 
     <!--<span class="help-block" ng-if="!username.valid && username.touched">-->
       <!--Please enter username!-->
-    <!--</span>-->
+    <!--</span> -->
+
     <span><br></span>
     <input
       name= "password"
@@ -29,7 +30,6 @@
            class="form-control"/>
     <span><br></span>
     <button class="btn btn-primary btn-block"
-            type="submit"
             (click)="login(username.value, password.value)"
             [disabled]="!f.valid">Login</button>
     <button

@@ -17,8 +17,8 @@ import { WidgetChooserComponent } from './components/widget/widget-chooser/widge
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
-import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
-import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+import { WidgetImageComponent } from './components/widget/widget-image/widget-image.component';
+import { WidgetYoutubeComponent } from './components/widget/widget-youtube/widget-youtube.component';
 
 // import
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,7 +33,7 @@ import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 
 import {Widget} from './models/widget.model.client';
-import { WidgetHeadingComponent } from './components/widget/widget-heading/widget-heading/widget-heading.component';
+import { WidgetHeadingComponent } from './components/widget/widget-heading/widget-heading.component';
 
 
 
