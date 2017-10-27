@@ -2655,7 +2655,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    baseUrl: ''
+    baseUrl: '/'
 };
 //# sourceMappingURL=environment.js.map
 
