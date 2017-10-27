@@ -20,14 +20,9 @@ export class WidgetImageComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.widgetId = params['wgid'];
-          console.log('in heading');
-          console.log(params);
         }
       );
-    this.widgetService.findWidgetById(this.widgetId)
-      .subscribe((widget) => {
-        this.widget = widget;
-      });
+
   }
 
 }
