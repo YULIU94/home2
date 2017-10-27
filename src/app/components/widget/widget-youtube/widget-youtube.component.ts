@@ -4,11 +4,11 @@ import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-widget-heading',
-  templateUrl: './widget-heading.component.html',
-  styleUrls: ['./widget-heading.component.css']
+  selector: 'app-widget-youtube',
+  templateUrl: './widget-youtube.component.html',
+  styleUrls: ['./widget-youtube.component.css']
 })
-export class WidgetHeadingComponent implements OnInit {
+export class WidgetYoutubeComponent implements OnInit {
   @Input()
   widget: Widget;
   widgetId: String;

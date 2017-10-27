@@ -27,9 +27,9 @@
         <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
         <button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>
       </div>
-      <app-widget-heading *ngSwitchCase='1'></app-widget-heading>
-      <app-widget-image *ngSwitchCase="2"></app-widget-image>
-      <app-widget-youtube *ngSwitchCase="3"></app-widget-youtube>
+      <app-widget-heading *ngSwitchCase='1' [widget]="widget"></app-widget-heading>
+      <app-widget-image *ngSwitchCase='2' [widget]="widget"></app-widget-image>
+      <app-widget-youtube *ngSwitchCase="3" [widget]="widget"></app-widget-youtube>
     </li>
   </ul>
 

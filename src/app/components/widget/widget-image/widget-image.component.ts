@@ -4,11 +4,11 @@ import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-widget-heading',
-  templateUrl: './widget-heading.component.html',
-  styleUrls: ['./widget-heading.component.css']
+  selector: 'app-widget-image',
+  templateUrl: './widget-image.component.html',
+  styleUrls: ['./widget-image.component.css']
 })
-export class WidgetHeadingComponent implements OnInit {
+export class WidgetImageComponent implements OnInit {
   @Input()
   widget: Widget;
   widgetId: String;

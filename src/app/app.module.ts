@@ -17,8 +17,8 @@ import { WidgetChooserComponent } from './components/widget/widget-chooser/widge
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
-import { WidgetImageComponent } from './components/widget/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-youtube/widget-youtube.component';
+
 
 // import
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,7 +34,13 @@ import {WidgetService} from './services/widget.service.client';
 
 import {Widget} from './models/widget.model.client';
 import { WidgetHeadingComponent } from './components/widget/widget-heading/widget-heading.component';
-
+import {WidgetNewHeaderComponent} from './components/widget/widget-new/widget-new-header/widget-new-header.component';
+import { WidgetNewImageComponent } from './components/widget/widget-new/widget-new-image/widget-new-image.component';
+import { WidgetNewYoutubeComponent } from './components/widget/widget-new/widget-new-youtube/widget-new-youtube.component';
+import { WidgetEditHeaderComponent } from './components/widget/widget-edit/widget-edit-header/widget-edit-header.component';
+import { WidgetEditImageComponent } from './components/widget/widget-edit/widget-edit-image/widget-edit-image.component';
+import { WidgetEditYoutubeComponent } from './components/widget/widget-edit/widget-edit-youtube/widget-edit-youtube.component';
+import {WidgetImageComponent} from './components/widget/widget-image/widget-image.component';
 
 
 @NgModule({
@@ -43,19 +49,28 @@ import { WidgetHeadingComponent } from './components/widget/widget-heading/widge
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
+
     PageNewComponent,
     PageEditComponent,
     PageListComponent,
+
     WebsiteNewComponent,
     WebsiteEditComponent,
     WebsiteListComponent,
+
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
     WidgetYoutubeComponent,
-    WidgetHeadingComponent
+    WidgetHeadingComponent,
+    WidgetNewHeaderComponent,
+    WidgetNewImageComponent,
+    WidgetNewYoutubeComponent,
+    WidgetEditHeaderComponent,
+    WidgetEditImageComponent,
+    WidgetEditYoutubeComponent
   ],
   imports: [
     BrowserModule,

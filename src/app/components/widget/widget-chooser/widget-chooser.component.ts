@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {WidgetService} from '../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-chooser',
@@ -14,31 +15,18 @@ export class WidgetChooserComponent implements OnInit {
   pageId: String;
 
 
-  constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
-  toWebsiteList( ) {
-    this.router.navigate(['profile', this.userId, 'website']);
-  }
-
-  toWidgetList() {
-    console.log(this.websiteId);
-    console.log(this.websiteId);
-    console.log(this.pageId);
-    this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page', this.pageId]);
-  }
-
-  toProfile() {
-    this.router.navigate(['profile', this.userId]);
-  }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
-          this.websiteId = params['websiteId'];
-          this.pageId = params['pageId'];
+          this.websiteId = params['wid'];
+          this.pageId = params['pid'];
+          console.log(params);
         }
       );
   }
