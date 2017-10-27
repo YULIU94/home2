@@ -26,8 +26,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-const port = '3100';
+const port = process.env.PORT || '3100';
 app.set('port', port);
+console.log(port);
 // const port = '3100' ;
 // app.set('port', port);
 
