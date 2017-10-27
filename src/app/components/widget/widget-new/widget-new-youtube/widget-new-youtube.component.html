@@ -1,0 +1,71 @@
+<!--Nav Bar-->
+<div class="page-nav container-fluid nav-container">
+  <div class="row nav-row">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/new" class="navbar-link">
+        <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
+      </a>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <p class="page-nav-p pull-left">
+        <b>Widget Edit</b>
+      </p>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a class="navbar-link">
+        <button
+          (click)="createYoutube(name.value, text.value, url.value, width.value)"
+          class="page-nav-btn glyphicon glyphicon-ok pull-right"></button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!--Content-->
+<div class="widget-content">
+  <ul class="widget-ul">
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>Name</span>
+      </div>
+      <input class="widget-input form-control"
+             #name
+             type="text">
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>Text</span>
+      </div>
+      <input class="widget-input form-control"
+             #text
+             type="text">
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>URL</span>
+      </div>
+      <input class="widget-input form-control"
+             type="text"
+             #url
+             placeholder="https://github.com">
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>Width</span>
+      </div>
+      <input class="widget-input form-control"
+             #width
+             type="text">
+    </li>
+    <li>
+      <a class="btn btn-block btn-delete">Delete</a>
+    </li>
+  </ul>
+</div>
+
+<!--Bottom Bar-->
+<div class="page-bottom">
+  <a routerLink="/profile/{{userId}}" class="navbar-link">
+    <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
+  </a>
+</div>
