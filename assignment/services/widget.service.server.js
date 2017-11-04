@@ -5,8 +5,49 @@ module.exports = function (app) {
   app.put('/api/widget/:widgetId', updateWidget);
   app.delete('/api/widget/:widgetId', deleteWidget);
 
+  // initial : initial index of the widget before being reordered
+  // final : final index of the widget after being reordered
+  app.put('/api/page/:pageId/widget?initial=index1&final=index2', sortWidgets);
+
+  var multer = require('multer'); // npm install multer --save
+  var upload = multer({ dest: __dirname+'/../../public/uploads' });
+  app.post ("/api/upload", upload.single('myFile'), uploadImage);
+
+
+
+
   var WIDGETS = require('./widget.mock.server');
 
+
+  function uploadImage(req, res) {
+
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    widget = getWidgetById(widgetId);
+    widget.url = '/uploads/'+filename;
+
+    var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId;
+
+    res.redirect(callbackUrl);
+  }
+
+
+  function sortWidgets() {
+
+  }
 
   function createWidget(req, res) {
     var pageId = req.params['pageId'];

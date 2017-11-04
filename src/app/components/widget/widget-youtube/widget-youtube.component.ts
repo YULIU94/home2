@@ -13,7 +13,9 @@ export class WidgetYoutubeComponent implements OnInit {
   widget: Widget;
   widgetId: String;
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
+  constructor(private widgetService: WidgetService,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -22,6 +24,8 @@ export class WidgetYoutubeComponent implements OnInit {
           this.widgetId = params['wgid'];
         }
       );
+
+
   }
 
 }

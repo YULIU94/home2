@@ -41,6 +41,8 @@ import { WidgetEditHeaderComponent } from './components/widget/widget-edit/widge
 import { WidgetEditImageComponent } from './components/widget/widget-edit/widget-edit-image/widget-edit-image.component';
 import { WidgetEditYoutubeComponent } from './components/widget/widget-edit/widget-edit-youtube/widget-edit-youtube.component';
 import {WidgetImageComponent} from './components/widget/widget-image/widget-image.component';
+import {SafePipe} from './services/SafePipe';
+import { FlickrImageSearchComponent } from './components/widget/widget-image/flickr-image-search/flickr-image-search.component';
 
 
 @NgModule({
@@ -70,7 +72,11 @@ import {WidgetImageComponent} from './components/widget/widget-image/widget-imag
     WidgetNewYoutubeComponent,
     WidgetEditHeaderComponent,
     WidgetEditImageComponent,
-    WidgetEditYoutubeComponent
+    WidgetEditYoutubeComponent,
+
+    SafePipe,
+
+    FlickrImageSearchComponent
   ],
   imports: [
     BrowserModule,
