@@ -12,6 +12,7 @@ export class WidgetImageComponent implements OnInit {
   @Input()
   widget: Widget;
   widgetId: String;
+  websiteId: String;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
 
@@ -20,6 +21,7 @@ export class WidgetImageComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.widgetId = params['wgid'];
+          this.websiteId = params['wid'];
         }
       );
 

@@ -6,6 +6,7 @@ module.exports = function (app) {
   app.delete('/api/user/:userId/website/:websiteId', deleteWebsite);
   app.put('/api/user/:userId/website/:websiteId', updateWebsite);
 
+  var websiteModel = require('../model/website/website.model.server');
   var WEBSITES = require("./website.mock.server");
 
   function updateWebsite(req, res) {
@@ -26,8 +27,13 @@ module.exports = function (app) {
   function findWebsitesForUser(req, res) {
     var userId = req.params['userId'];
     var websites = getWebsitesForUserId(userId);
+
+    WebsiteModel.findWebsitesForUser(userId)
+      .then(function (websites) {
+        res.json(websites);
+      });
     // console.log(websites);
-    res.json(websites);
+    // res.json(websites);
   }
 
   function createWebsite(req, res) {
@@ -35,9 +41,22 @@ module.exports = function (app) {
     var website = req.body;
     website.developerId = userId;
     website._id = (new Date()).getTime().toString();
-    WEBSITES.push(website);
-    // console.log(website);
-    res.json(getWebsitesForUserId(userId));
+
+    websiteModel
+      .createWebsite(website)
+      .then(function(website) {
+        websiteModel
+          .findWebsitesForUser(userId)
+          .then(function (websites) {
+            res.json(websites);
+          });
+      }, function (err) {
+        console.log(err);
+      });
+
+    // WEBSITES.push(website);
+    // // console.log(website);
+    // res.json(getWebsitesForUserId(userId));
   }
 
   function deleteWebsite(req, res) {

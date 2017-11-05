@@ -6,6 +6,7 @@ module.exports = function (app) {
   app.put('/api/user/:userId', updateUser);
   app.delete('/api/user/:userId', deleteUser);
 
+  var userModel = require('../model/user/user.model.server');
 
   const USERS = require('./user.mock.server');
 
@@ -13,14 +14,14 @@ module.exports = function (app) {
     const username = req.query['username'];
     const password = req.query['password'];
     if(username && password) {
-      const user = users.find(function (user) {
-        return user.username === username && user.password === password;
-      });
-      if (user) {
+
+      var promise = userModel
+        .findUserByCredentials(username, password);
+      promise.then(function (user) {
         res.json(user);
-      }else{
-        res.json(null);
-      }
+        console.log(user);
+      });
+      return;
     } else if(username) {
       const user = users.find(function (user) {
         return user.username === username;
@@ -37,10 +38,14 @@ module.exports = function (app) {
 
   function findUserById(req, res) {
     const userId = req.params["userId"];
-    const user = USERS.find(function (user) {
-      return user._id === userId;
-    });
-    res.json(user);
+    userModel.findUserById(userId)
+      .then(function (user) {
+        res.json(user);
+      });
+    // const user = USERS.find(function (user) {
+    //   return user._id === userId;
+    // });
+    // res.json(user);
   }
 
   function findUser(req, res) {
@@ -82,19 +87,27 @@ module.exports = function (app) {
     const username = req.query['username'];
     const password = req.query['password'];
 
-    console.log('username');
-    console.log('password');
-    console.log(USERS);
+    // console.log('username');
+    // console.log('password');
+    // console.log(USERS);
 
     if (username && password) {
-      for (let i=0; i<USERS.length; i++){
-        if (USERS[i].username === username && USERS[i].password === password){
-          console.log('find user');
-          console.log(USERS[i]);
-          res.json(USERS[i]);
-        }
-      }
-        res.json(null);
+      var promise = userModel.findUserByCredentials(username, password);
+      promise.then(function (user) {
+        res.json(user);
+        console.log(user);
+        //
+      });
+
+      return;
+      // for (let i=0; i<USERS.length; i++){
+      //   if (USERS[i].username === username && USERS[i].password === password){
+      //     console.log('find user');
+      //     console.log(USERS[i]);
+      //     res.json(USERS[i]);
+      //   }
+      // }
+      //   res.json(null);
     }else if(username){
       const user = USERS.find(function (user) {
         return user.username === username;

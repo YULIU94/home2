@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           console.log('user:');
           console.log(user);
           if (user) {
-            this.router.navigate(['profile', user._id]);
+            this.router.navigate(['/profile', user._id]);
           }else {
             this.errorFlag = true;
             this.errorMsg = 'Error';

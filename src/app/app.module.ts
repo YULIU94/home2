@@ -31,6 +31,7 @@ import {UserService} from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
+import {FlickrService} from './services/flickr.service.client';
 
 import {Widget} from './models/widget.model.client';
 import { WidgetHeadingComponent } from './components/widget/widget-heading/widget-heading.component';
@@ -43,6 +44,7 @@ import { WidgetEditYoutubeComponent } from './components/widget/widget-edit/widg
 import {WidgetImageComponent} from './components/widget/widget-image/widget-image.component';
 import {SafePipe} from './services/SafePipe';
 import { FlickrImageSearchComponent } from './components/widget/widget-image/flickr-image-search/flickr-image-search.component';
+
 
 
 @NgModule({
@@ -85,7 +87,7 @@ import { FlickrImageSearchComponent } from './components/widget/widget-image/fli
     HttpModule
   ],
   providers: [
-    UserService, WebsiteService, PageService, WidgetService
+    UserService, WebsiteService, PageService, WidgetService, FlickrService
   ],
   bootstrap: [
     AppComponent
