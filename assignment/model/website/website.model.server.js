@@ -16,7 +16,10 @@ function createWebsite(website) {
 }
 
 function findWebsitesForUser(userId) {
-  return websiteModel.find({developerId: userId});
+  return websiteModel
+    .find({developerId: userId})
+    .populate('developerId','username') // populate user here
+    .exec();
 }
 
 

@@ -45,10 +45,10 @@ module.exports = function (app) {
 
     websiteModel
       .createWebsite(website)
-      .then(function(website) {
+      .then(function(website) { //good version
         res.json(website);
       }, function (err) {
-        console.log(err);
+        console.log(err); // bad version -- if failed
       });
 
     // WEBSITES.push(website);
