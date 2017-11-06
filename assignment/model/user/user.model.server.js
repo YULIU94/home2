@@ -6,6 +6,7 @@ var UserModel = mongoose.model("UserModel", UserSchema);
 UserModel.createUser = createUser;
 UserModel.findAllUsers = findAllUsers;
 UserModel.findUserById = findUserById;
+UserModel.findUserByUsername = findUserByUsername;
 UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.updateUser = updateUser;
 UserModel.deleteUser = deleteUser;
@@ -18,10 +19,7 @@ function findUserByCredentials(username, password){
 }
 
 function createUser(user){
-  UserModel.create(user, function (err, doc) {
-    console.log(err);
-    console.log(doc);
-  });
+  return UserModel.create(user);
 }
 
 function findAllUsers(){
@@ -34,8 +32,12 @@ function findUserById(userId){
   return UserModel.findById(userId);
 }
 
-function updateUser(userId) {
+function findUserByUsername(username) {
+  return UserModel.findOne({username : username});
+}
 
+function updateUser(userId, user) {
+  return UserModel.update({_id: userId}, {$set: {email: user.email, firstName: user.firstname, lastName: user.lastname}});
 }
 
 function deleteUser(userId) {

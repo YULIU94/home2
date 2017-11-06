@@ -23,7 +23,7 @@ export class UserService   {
     'findUserById' : this.findUserById
   };
 
-  createUser(user: User) {
+  createUser(user) {
     const url = 'http://localhost:3100/api/user';
     return this.http.post(url, user)
       .map((response: Response) => {
@@ -52,24 +52,22 @@ export class UserService   {
       });
   }
 
-  findUserByUsername(username: string) {
-    // this.http.get("/api/user?username="+username).subscribe();
+  findUserByUsername(username: String) {
+    const url = 'http://localhost:3100/api/user?username=' + username;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
 
-
-    // for (let x = 0; x < this.users.length; x++) {
-    //   if (this.users[x].username === username) {
-    //     return this.users[x];
-    //   }
-    // }
   }
 
-  updateUser(userId, user) {
+  updateUser(user) {
     // for (let x = 0; x < this.users.length; x++) {
     //   if (this.users[x]._id === userId) {
     //     this.users[x] = user;
     //   }
     // }
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = 'http://localhost:3100/api/user/' + user._id;
     return this.http.put(url, user)
       .map((response: Response) => {
         return response.json();

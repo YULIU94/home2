@@ -28,7 +28,7 @@ module.exports = function (app) {
     var userId = req.params['userId'];
     var websites = getWebsitesForUserId(userId);
 
-    WebsiteModel.findWebsitesForUser(userId)
+    websiteModel.findWebsitesForUser(userId)
       .then(function (websites) {
         res.json(websites);
       });
@@ -40,16 +40,13 @@ module.exports = function (app) {
     var userId = req.params['userId'];
     var website = req.body;
     website.developerId = userId;
-    website._id = (new Date()).getTime().toString();
+    delete website._id;
+    // website._id = (new Date()).getTime().toString();
 
     websiteModel
       .createWebsite(website)
       .then(function(website) {
-        websiteModel
-          .findWebsitesForUser(userId)
-          .then(function (websites) {
-            res.json(websites);
-          });
+        res.json(website);
       }, function (err) {
         console.log(err);
       });

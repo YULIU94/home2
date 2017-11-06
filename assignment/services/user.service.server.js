@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   var userModel = require('../model/user/user.model.server');
 
-  const USERS = require('./user.mock.server');
+  // const USERS = require('./user.mock.server');
 
   function findUsers(req, res) {
     const username = req.query['username'];
@@ -23,14 +23,20 @@ module.exports = function (app) {
       });
       return;
     } else if(username) {
-      const user = users.find(function (user) {
-        return user.username === username;
-      });
-      if (user) {
-        res.json(user);
-      }else{
-        res.json(null);
-      }
+      UserModel.findUserByUsername(username)
+        .then(function (user) {
+          res.json(user);
+
+        });
+      return;
+      // const user = users.find(function (user) {
+      //   return user.username === username;
+      // });
+      // if (user) {
+      //   res.json(user);
+      // }else{
+      //   res.json(null);
+      // }
     } else {
       res.json(users);
     }
@@ -70,53 +76,40 @@ module.exports = function (app) {
   }
 
   function createUser(req, res) {
-    const username = req.params['username'];
-    const password = req.params['password'];
 
     const id_new = (new Date().getTime()).toString();
     const user = req.body;
-    user._id = id_new;
-    console.log(USERS.length);
-    USERS.push(user);
-    console.log(USERS.length);
-    console.log(USERS);
-    res.json(user);
+    // user._id = id_new;
+    // console.log(USERS.length);
+    // USERS.push(user);
+    // console.log(USERS.length);
+    // console.log(USERS);
+    // res.json(user);
+    userModel
+      .createUser(user)
+      .then(function (user) {
+        res.json(user);
+      });
   }
 
   function findUserByCredentials(req, res) {
     const username = req.query['username'];
     const password = req.query['password'];
 
-    // console.log('username');
-    // console.log('password');
-    // console.log(USERS);
-
     if (username && password) {
       var promise = userModel.findUserByCredentials(username, password);
       promise.then(function (user) {
         res.json(user);
         console.log(user);
-        //
       });
 
       return;
-      // for (let i=0; i<USERS.length; i++){
-      //   if (USERS[i].username === username && USERS[i].password === password){
-      //     console.log('find user');
-      //     console.log(USERS[i]);
-      //     res.json(USERS[i]);
-      //   }
-      // }
-      //   res.json(null);
     }else if(username){
-      const user = USERS.find(function (user) {
-        return user.username === username;
-      });
-      if (user){
+      var promise = userModel.findUserByUsername(username);
+      promise.then(function (user) {
         res.json(user);
-      } else {
-        res.json(null);
-      }
+        console.log(user);
+      });
     }else{
       res.json(null);
     }
@@ -126,13 +119,11 @@ module.exports = function (app) {
     var userId = req.params['userId'];
     var newUser = req.body;
 
-    for (let x = 0; x < USERS.length; x++) {
-      if (USERS[x]._id === userId ) {
-        USERS[x] = newUser;
-        res.json(newUser);
-        return;
-      }
-    }
+    userModel
+      .updateUser(userId, newUser)
+      .then(function (status) {
+        res.send(status);
+      });
   }
 
   function deleteUser(req, res) {

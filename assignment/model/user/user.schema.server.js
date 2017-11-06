@@ -1,15 +1,15 @@
+// var Website = require('../website/website.model.server');
 
 var mongoose = require('mongoose');
 
 var UserSchema = mongoose.Schema({
   username: String,
-  passwoord: String,
-  firstname: String,
+  password: String,
+  firstName: String,
   lastName: String,
   email: String,
   phone: String,
-  //???
-  websites: [],
+  // websites: [Website],
   dateCreated: Date
 }, {collection: 'user'});
 

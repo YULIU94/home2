@@ -12,12 +12,13 @@ export class WebsiteNewComponent implements OnInit {
 
   userId: String;
   websites = [{}];
+  websiteDescription: String;
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
   createWebsite(websitename, websitedescription) {
-    const website: Website = new Website('', websitename, this.userId, websitedescription);
+    const website: Website = new Website('', websitename, this.userId, this.websiteDescription);
     this._websiteService.createWebsite(this.userId, website)
       .subscribe((websites) => {
         // this.websites = websites;

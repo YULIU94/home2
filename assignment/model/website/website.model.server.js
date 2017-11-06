@@ -3,20 +3,20 @@
 
 var mongoose = require('mongoose');
 var WebsiteSchema = require('./website.schema.server');
-var WebsiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
+var websiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
 
-module.exports = WebsiteModel;
+module.exports = websiteModel;
 
-WebsiteModel.createWebsite = createWebsite;
-WebsiteModel.findWebsitesForUser = findWebsitesForUser;
+websiteModel.createWebsite = createWebsite;
+websiteModel.findWebsitesForUser = findWebsitesForUser;
 
 
 function createWebsite(website) {
-  return WebsiteModel.create(website);
+  return websiteModel.create(website);
 }
 
 function findWebsitesForUser(userId) {
-  return WebsiteModel.find({developerId: userId});
+  return websiteModel.find({developerId: userId});
 }
 
 
