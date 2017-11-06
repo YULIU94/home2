@@ -1,5 +1,5 @@
 // var Website = require('../website/website.model.server');
-
+var WebsiteSchema = require('../website/website.schema.server');
 var mongoose = require('mongoose');
 
 var UserSchema = mongoose.Schema({
@@ -9,7 +9,7 @@ var UserSchema = mongoose.Schema({
   lastName: String,
   email: String,
   phone: String,
-  // websites: [Website],
+  websites: [WebsiteSchema],
   dateCreated: Date
 }, {collection: 'user'});
 

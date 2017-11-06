@@ -75,11 +75,6 @@ export class UserService   {
   }
 
   deleteUser(userId) {
-    // for (let x = 0; x < this.users.length; x++) {
-    //   if (this.users[x]._id === userId) {
-    //     this.users.splice(x, 1);
-    //   }
-    // }
     const url = 'http://localhost:3100/api/user/' + userId;
     return this.http.delete(url)
       .map((response: Response) => {

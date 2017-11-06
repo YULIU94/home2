@@ -40,27 +40,6 @@ export class WebsiteService {
       );
   }
 
-
-
-  findWebsiteByUser(userId) {
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x].developerId === userId ) {
-        return this.websites[x];
-      }
-    }
-  }
-
-  findWebsitesByUser(userId) {
-    const sites = [{}];
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x].developerId === userId ) {
-        sites.push(this.websites[x]);
-      }
-    }
-    sites.splice(0, 1);
-    return sites;
-  }
-
   findWebsiteById(userId, websiteId) {
     const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
     return this.http.get(url)
@@ -69,8 +48,8 @@ export class WebsiteService {
       });
   }
 
-  updateWebsite(userId, newWebsite: Website) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + newWebsite._id;
+  updateWebsite(userId, newWebsite, websiteId) {
+    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
     return this.http.put(url, newWebsite)
       .map((response: Response) => {
         return response.json();

@@ -129,14 +129,11 @@ module.exports = function (app) {
   function deleteUser(req, res) {
     var userId = req.params['userId'];
 
-    for (let x = 0; x < USERS.length; x++) {
-      if (USERS[x]._id === userId ) {
-        USERS.splice(x, 1);
-        console.log(USERS);
+    userModel
+      .deleteUser(userId)
+      .then(function () {
         res.json(null);
-        return;
-      }
-    }
+      });
   }
 };
 

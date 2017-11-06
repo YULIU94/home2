@@ -14,20 +14,23 @@ module.exports = function (app) {
     var userId = req.params['userId'];
     var newWebsite = req.body;
 
-    for (let x = 0; x < WEBSITES.length; x++) {
-      if (WEBSITES[x]._id === websiteId ) {
-        WEBSITES[x] = newWebsite;
-        var websites = getWebsitesForUserId(userId);
-        res.json(websites);
-        return;
-      }
-    }
+    websiteModel
+      .updateWebsite(websiteId, newWebsite)
+      .then(function (status) {
+        res.send(status);
+      });
+    // for (let x = 0; x < WEBSITES.length; x++) {
+    //   if (WEBSITES[x]._id === websiteId ) {
+    //     WEBSITES[x] = newWebsite;
+    //     var websites = getWebsitesForUserId(userId);
+    //     res.json(websites);
+    //     return;
+    //   }
+    // }
   }
 
   function findWebsitesForUser(req, res) {
     var userId = req.params['userId'];
-    var websites = getWebsitesForUserId(userId);
-
     websiteModel.findWebsitesForUser(userId)
       .then(function (websites) {
         res.json(websites);
@@ -58,42 +61,25 @@ module.exports = function (app) {
 
   function deleteWebsite(req, res) {
     var websiteId = req.params['websiteId'];
-    var userId = req.params['userId'];
-    for (let x = 0; x < WEBSITES.length; x++) {
-      if (WEBSITES[x]._id === websiteId ) {
-        WEBSITES.splice(x, 1);
-        var websites = getWebsitesForUserId(userId);
-        res.json(websites);
-        return;
-      }
-    }
-  }
+    websiteModel
+      .deleteWebsite(websiteId)
+      .then(function () {
+        res.json(null);
+      });
 
-  function getWebsitesForUserId(userId) {
-    const websites = [];
-    for (let i=0; i<WEBSITES.length; i++){
-      if (WEBSITES[i].developerId === userId){
-        websites.push(WEBSITES[i]);
-      }
-    }
-    return websites;
   }
 
   function findWebsiteById(req, res) {
     var websiteId = req.params['websiteId'];
     var userId = req.params['userId'];
 
-    res.json(getWebsiteById(websiteId));
-  }
+    websiteModel
+      .findWebsiteById(websiteId)
+      .then(function (website) {
+        console.log('id:' + website);
+        res.json(website);
 
-
-  // helper functions
-  function getWebsiteById(websiteId) {
-      for (let i=0; i<WEBSITES.length; i++){
-        if (WEBSITES[i]._id === websiteId){
-          return WEBSITES[i];
-        }
-      }
+      });
   }
 
 

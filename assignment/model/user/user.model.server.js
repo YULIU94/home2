@@ -23,9 +23,7 @@ function createUser(user){
 }
 
 function findAllUsers(){
-  UserModel.find(user, function (err, docs) {
-    console.log(docs);
-  });
+  return UserModel.find({});
 }
 
 function findUserById(userId){
@@ -41,7 +39,9 @@ function updateUser(userId, user) {
 }
 
 function deleteUser(userId) {
-
+  return UserModel.remove({_id: userId}, function (err) {
+    if (err) return handleError(err);
+  });
 }
 
 

@@ -11,10 +11,9 @@ import {Website} from '../../../models/website.model.client';
 export class WebsiteEditComponent implements OnInit {
 
   userId: String;
-  websites = [{}];
+  websites = [];
   websiteId: String;
   website: Website;
-  websiteName: String
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute,
               private router: Router) {}
@@ -22,10 +21,11 @@ export class WebsiteEditComponent implements OnInit {
 
 
   updateWebsite(name: String, description: String) {
+    console.log(this.userId);
+    console.log(this.websiteId);
     const newWebsite = new Website(this.website._id, name, this.website.developerId, description);
-    this._websiteService.updateWebsite(this.userId, newWebsite)
+    this._websiteService.updateWebsite(this.userId, newWebsite, this.websiteId)
       .subscribe((websites) => {
-        this.websites = websites;
         this.router.navigate(['profile', this.userId, 'website']);
       });
   }
@@ -43,27 +43,14 @@ export class WebsiteEditComponent implements OnInit {
         (params: any) => {
           this.userId = params['userId'];
           this.websiteId = params['wid'];
+          console.log(this.userId);
+          console.log(this.websiteId);
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
     this._websiteService.findWebsiteById(this.userId, this.websiteId)
       .subscribe((website) => {
         this.website = website;
+        console.log(this.website);
       });
   }
 }
-
-
-// findPage(website) {
-//   console.log(this.websites);
-//   console.log(website['_id']);
-//   if (website) {
-//     this.router.navigate(['profile', this.userId, 'website', website['_id'], 'page']);
-//   }
-// }
-//
-// findEditWebsite(website) {
-//   if (website) {
-//     this.router.navigate(['profile', this.userId, 'website', website['_id'] ]);
-//   }
-// }

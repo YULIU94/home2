@@ -12,7 +12,7 @@ import {User} from '../../../models/user.model.client';
 export class ProfileComponent implements OnInit {
 
 
-  userId: string;
+  userId: String;
   user: User;
   username: String;
 
@@ -45,14 +45,15 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
+          console.log(this.userId);
         }
       );
-    // this.user = this.userService.findUserById(this.userId);
     this.userService.findUserById(this.userId)
       .subscribe((user: User) => {
         console.log(user);
         this.user = user;
         this.username = user.username;
+        console.log(this.username);
       });
   }
 

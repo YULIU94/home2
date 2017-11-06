@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 var WebsiteSchema = mongoose.Schema({
-  // _user: User,
+  // _user: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
   name: String,
   // populate user here
   developerId: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
