@@ -21,6 +21,8 @@ export class WidgetListComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
+
+
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(

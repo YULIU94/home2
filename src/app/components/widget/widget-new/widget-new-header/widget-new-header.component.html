@@ -36,10 +36,11 @@
       <div class="widget-input-title">
         <span>Text</span>
       </div>
-      <input class="widget-input form-control"
-             type="text"
-             #text
-             placeholder="US Senate Reaches Compromise">
+      <!--<input class="widget-input form-control"-->
+             <!--type="text"-->
+             <!--#text-->
+             <!--placeholder="US Senate Reaches Compromise">-->
+      <quill-editor (change)="onContentChanged($event)"> </quill-editor>
     </li>
     <li class="widget-li">
       <div class="widget-input-title">

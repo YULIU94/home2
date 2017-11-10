@@ -24,13 +24,25 @@
   <ul class="widget-ul" *ngFor="let widget of widgets" [ngSwitch]="widget.type">
     <li class="widget-li" >
       <div class="widget-toolbar">
-        <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        <a *ngSwitchCase="1" routerLink="{{widget._id}}/header" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
+        <a *ngSwitchCase="2" routerLink="{{widget._id}}/image" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
+        <a *ngSwitchCase="3" routerLink="{{widget._id}}/youtube" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
+        <a *ngSwitchCase="4" routerLink="{{widget._id}}/text" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
         <button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>
       </div>
       <app-widget-heading *ngSwitchCase='1' [widget]="widget"></app-widget-heading>
       <!--<app-flickr-image-search *ngSwitchCase="2" ></app-flickr-image-search>-->
       <app-widget-image *ngSwitchCase='2' [widget]="widget"></app-widget-image>
       <app-widget-youtube *ngSwitchCase="3" [widget]="widget"></app-widget-youtube>
+      <app-widget-text *ngSwitchCase="4" [widget]="widget"></app-widget-text>
     </li>
   </ul>
 </div>

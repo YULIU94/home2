@@ -13,18 +13,22 @@ export class WidgetNewHeaderComponent implements OnInit {
   userId: String;
   websiteId: String;
   pageId: String;
-
+  text: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
   createHeader(name, text, size) {
-    const widget = {'_id': '', 'type': 1, 'size': size, 'text': text, 'src': '', pageId: this.pageId};
+    const widget = {'_id': '', 'type': 1, 'size': size, 'text': this.text, 'src': '', pageId: this.pageId};
     this.widgetService.createWidget(this.pageId, widget)
       .subscribe((pages) => {
         this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
       });
+  }
+
+  onContentChanged({ quill, html, text }) {
+    this.text = text;
   }
 
   ngOnInit() {

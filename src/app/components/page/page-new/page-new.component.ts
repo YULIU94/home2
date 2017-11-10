@@ -20,7 +20,7 @@ export class PageNewComponent implements OnInit {
               private router: Router) {}
 
   createPage(pagename, pagetitle) {
-    const page = { '_id': '321', 'name': pagename, 'websiteId': this.websiteId, 'description': 'new' };
+    const page = {'name': pagename, 'websiteId': this.websiteId, 'description': 'new' , 'title': pagetitle};
     this._pageService.createPage(this.websiteId, page)
       .subscribe((pages) => {
         this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page']);

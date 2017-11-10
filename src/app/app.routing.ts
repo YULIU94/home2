@@ -20,6 +20,8 @@ import {WidgetNewYoutubeComponent} from './components/widget/widget-new/widget-n
 import {WidgetEditHeaderComponent} from './components/widget/widget-edit/widget-edit-header/widget-edit-header.component';
 import {WidgetEditImageComponent} from './components/widget/widget-edit/widget-edit-image/widget-edit-image.component';
 import {WidgetEditYoutubeComponent} from './components/widget/widget-edit/widget-edit-youtube/widget-edit-youtube.component';
+import {WidgetNewTextComponent} from './components/widget/widget-new/widget-new-text/widget-new-text.component';
+import {WidgetEditTextComponent} from './components/widget/widget-edit/widget-edit-text/widget-edit-text.component';
 // import {WidgetYoutubeComponent} from "./components/widget/widget-edit/widget-youtube/widget-youtube.component";
 
 
@@ -41,10 +43,12 @@ const APP_ROUTES: Routes = [
   {path: 'profile/:userId/website/:wid/page/:pid/widget/header', component: WidgetNewHeaderComponent},
   {path: 'profile/:userId/website/:wid/page/:pid/widget/image', component: WidgetNewImageComponent},
   {path: 'profile/:userId/website/:wid/page/:pid/widget/youtube', component: WidgetNewYoutubeComponent},
+  {path: 'profile/:userId/website/:wid/page/:pid/widget/text', component: WidgetNewTextComponent},
 
   {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/header', component: WidgetEditHeaderComponent},
   {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/image', component: WidgetEditImageComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/youtube', component: WidgetEditYoutubeComponent}
+  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/youtube', component: WidgetEditYoutubeComponent},
+  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/text', component: WidgetEditTextComponent},
 ];
 
 // Export the routes as module providers

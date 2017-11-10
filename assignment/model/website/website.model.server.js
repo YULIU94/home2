@@ -1,6 +1,4 @@
 
-// import {Website} from "../../../src/app/models/website.model.client";
-
 var mongoose = require('mongoose');
 var WebsiteSchema = require('./website.schema.server');
 var websiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
@@ -19,14 +17,14 @@ function createWebsite(website) {
   var newWebsite = null;
   return websiteModel
     .create(website)
-    .then(function (website) {
-      newWebsite = website;
-      userModel.findUserById(newWebsite.developerId)
-        .then(function (user) {
-          user.websites.push(newWebsite);
-          return user.save();
-        });
-    });
+    // .then(function (website) {
+    //   newWebsite = website;
+    //   userModel.findUserById(newWebsite.developerId)
+    //     .then(function (user) {
+    //       user.websites.push(newWebsite);
+    //       return user.save();
+    //     });
+    // });
 }
 
 function findWebsitesForUser(userId) {
@@ -38,7 +36,7 @@ function findWebsitesForUser(userId) {
 
 function findWebsiteById(websiteId) {
   console.log('findbyid');
-  return websiteModel.findById(websiteId);
+  return websiteModel.findOne({_id: websiteId});
 }
 
 

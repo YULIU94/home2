@@ -25,6 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { Routing } from './app.routing';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 // providers
 import {UserService} from './services/user.service.client';
@@ -44,6 +45,10 @@ import { WidgetEditYoutubeComponent } from './components/widget/widget-edit/widg
 import {WidgetImageComponent} from './components/widget/widget-image/widget-image.component';
 import {SafePipe} from './services/SafePipe';
 import { FlickrImageSearchComponent } from './components/widget/widget-image/flickr-image-search/flickr-image-search.component';
+import { WidgetTextComponent } from './components/widget/widget-text/widget-text.component';
+import { WidgetNewTextComponent } from './components/widget/widget-new/widget-new-text/widget-new-text.component';
+import { WidgetEditTextComponent } from './components/widget/widget-edit/widget-edit-text/widget-edit-text.component';
+
 
 
 
@@ -68,23 +73,26 @@ import { FlickrImageSearchComponent } from './components/widget/widget-image/fli
     WidgetHeaderComponent,
     WidgetImageComponent,
     WidgetYoutubeComponent,
+    WidgetTextComponent,
     WidgetHeadingComponent,
     WidgetNewHeaderComponent,
     WidgetNewImageComponent,
     WidgetNewYoutubeComponent,
+    WidgetNewTextComponent,
     WidgetEditHeaderComponent,
     WidgetEditImageComponent,
     WidgetEditYoutubeComponent,
+    WidgetEditTextComponent,
 
     SafePipe,
-
     FlickrImageSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     Routing,
-    HttpModule
+    HttpModule,
+    QuillEditorModule
   ],
   providers: [
     UserService, WebsiteService, PageService, WidgetService, FlickrService

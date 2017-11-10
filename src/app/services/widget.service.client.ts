@@ -44,6 +44,14 @@ export class WidgetService {
        });
   }
 
+  updateWidgetTextInput(widgetId, widget) {
+    const url = 'http://localhost:3100/api/widget/' + widgetId + '/textinput';
+    return this.http.put(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
    deleteWidget(widgetId) {
      const url = 'http://localhost:3100/api/widget/' + widgetId;
      return this.http.delete(url)

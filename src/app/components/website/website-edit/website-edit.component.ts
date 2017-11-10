@@ -21,8 +21,6 @@ export class WebsiteEditComponent implements OnInit {
 
 
   updateWebsite(name: String, description: String) {
-    console.log(this.userId);
-    console.log(this.websiteId);
     const newWebsite = new Website(this.website._id, name, this.website.developerId, description);
     this._websiteService.updateWebsite(this.userId, newWebsite, this.websiteId)
       .subscribe((websites) => {

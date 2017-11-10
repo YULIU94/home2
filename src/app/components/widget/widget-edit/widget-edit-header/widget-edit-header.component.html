@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a class="navbar-link">
+      <a class="navbar-link" (click)="saveWidget(name.value, text.value, size.value)">
         <button class="page-nav-btn glyphicon glyphicon-ok pull-right"></button>
       </a>
     </div>
@@ -26,27 +26,35 @@
       <div class="widget-input-title">
         <span>Name</span>
       </div>
-      <input class="widget-input form-control"
-             type="text">
+      <input
+        #name
+        class="widget-input form-control"
+        type="text">
     </li>
     <li class="widget-li">
       <div class="widget-input-title">
         <span>Text</span>
       </div>
-      <input class="widget-input form-control"
-             type="text"
-             placeholder="US Senate Reaches Compromise">
+      <!--<input class="widget-input form-control"-->
+             <!--#text-->
+             <!--type="text"-->
+             <!--placeholder="US Senate Reaches Compromise">-->
+
+      <quill-editor
+        (change)="onContentChanged($event)"
+        [(ngModel)]="widget.text" #text> </quill-editor> <!--[(ngModel)]="widget.text"   name="text"-->
     </li>
     <li class="widget-li">
       <div class="widget-input-title">
         <span>Size</span>
       </div>
       <input class="widget-input form-control"
+             #size
              type="text"
              placeholder="3">
     </li>
     <li>
-      <a class="btn btn-block btn-delete">Delete</a>
+      <a class="btn btn-block btn-delete" (click)="deleteWidget()">Delete</a>
     </li>
   </ul>
 </div>

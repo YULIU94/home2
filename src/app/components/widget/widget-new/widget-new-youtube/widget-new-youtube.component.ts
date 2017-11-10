@@ -20,7 +20,7 @@ export class WidgetNewYoutubeComponent implements OnInit {
 
   createYoutube(name, text, url, width) {
     url = url.replace('watch?v=', 'embed/');
-    const widget = {'_id': '', 'type': 3, 'size': '', 'text': text, 'src': url, pageId: this.pageId};
+    const widget = {'type': 3, 'size': '', 'text': text, 'url': url, pageId: this.pageId};
     this.widgetService.createWidget(this.pageId, widget)
       .subscribe((pages) => {
         this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);

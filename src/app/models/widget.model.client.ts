@@ -3,13 +3,13 @@ export class Widget {
   type: String;
   size: Number;
   text: String;
-  src: String;
+  url: String;
 
-  constructor(id: String, type: String, size: Number, text: String, src: String) {
+  constructor(id: String, type: String, size: Number, text: String, url: String) {
     this._id = id;
     this.type = type;
     this.size = size;
     this.text = text;
-    this.src = src;
+    this.url = url;
   }
 }

@@ -7,7 +7,6 @@ module.exports = function (app) {
   app.delete('/api/user/:userId', deleteUser);
 
   var userModel = require('../model/user/user.model.server');
-
   // const USERS = require('./user.mock.server');
 
   function findUsers(req, res) {
@@ -79,12 +78,6 @@ module.exports = function (app) {
 
     const id_new = (new Date().getTime()).toString();
     const user = req.body;
-    // user._id = id_new;
-    // console.log(USERS.length);
-    // USERS.push(user);
-    // console.log(USERS.length);
-    // console.log(USERS);
-    // res.json(user);
     userModel
       .createUser(user)
       .then(function (user) {

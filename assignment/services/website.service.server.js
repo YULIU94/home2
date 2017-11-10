@@ -44,7 +44,6 @@ module.exports = function (app) {
     var website = req.body;
     website.developerId = userId;
     delete website._id;
-    // website._id = (new Date()).getTime().toString();
 
     websiteModel
       .createWebsite(website)
@@ -53,10 +52,6 @@ module.exports = function (app) {
       }, function (err) {
         console.log(err); // bad version -- if failed
       });
-
-    // WEBSITES.push(website);
-    // // console.log(website);
-    // res.json(getWebsitesForUserId(userId));
   }
 
   function deleteWebsite(req, res) {
@@ -66,7 +61,6 @@ module.exports = function (app) {
       .then(function () {
         res.json(null);
       });
-
   }
 
   function findWebsiteById(req, res) {

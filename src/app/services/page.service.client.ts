@@ -12,9 +12,6 @@ export class PageService {
   pages = [];
 
    createPage(websiteId, page) {
-      // page.websiteId = websiteId;
-      // this.pages.push(page);
-      // console.log(this.pages);
      const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
      return this.http.post(url, page)
        .map((response: Response) => {
