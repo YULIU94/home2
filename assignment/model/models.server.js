@@ -10,5 +10,6 @@ if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
 }
 
 // var db = mongoose.connect('mongodb://localhost/cs5610');
+var connectionString = 'mongodb://admin:admin@ds161551.mlab.com:61551/heroku_gcsl46hk';
 var db = mongoose.connect(connectionString, {userMongoClient: true });
 module.exports = db;
