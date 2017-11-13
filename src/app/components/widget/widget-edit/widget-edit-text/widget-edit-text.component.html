@@ -1,0 +1,83 @@
+<!--Nav Bar-->
+<div class="page-nav container-fluid nav-container">
+  <div class="row nav-row">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="navbar-link">
+        <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
+      </a>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <p class="page-nav-p pull-left">
+        <b>Widget Edit</b>
+      </p>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <a class="navbar-link" (click)="saveWidget(name.value, rows.value, text.value, placeholder.value, formatted.checked)">
+        <button class="page-nav-btn glyphicon glyphicon-ok pull-right"></button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!--Content-->
+<div class="widget-content">
+  <ul class="widget-ul">
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>Name</span>
+      </div>
+      <input
+        #name
+        class="widget-input form-control"
+        type="text">
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>rows</span>
+      </div>
+      <input class="widget-input form-control"
+             #rows
+             type="number">
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>Text</span>
+      </div>
+      <input class="widget-input form-control"
+      #text
+      type="text"
+      placeholder="Text">
+
+      <!--<quill-editor-->
+        <!--(change)="onContentChanged($event)"-->
+        <!--[(ngModel)]="widget.text" #text> </quill-editor> &lt;!&ndash;[(ngModel)]="widget.text"   name="text"&ndash;&gt;-->
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>PlaceHolder</span>
+      </div>
+      <input class="widget-input form-control"
+             type="text"
+             #placeholder
+             placeholder="placeholder">
+    </li>
+    <li class="widget-li">
+      <div class="widget-input-title">
+        <span>Formatted</span>
+      </div>
+      <input class="widget-input form-control"
+             type="checkbox"
+             #formatted>
+    </li>
+    <li>
+      <a class="btn btn-block btn-delete" (click)="deleteWidget()">Delete</a>
+    </li>
+  </ul>
+</div>
+
+<!--Bottom Bar-->
+<div class="page-bottom">
+  <a routerLink="/profile/{{userId}}" class="navbar-link">
+    <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
+  </a>
+</div>
