@@ -34,6 +34,7 @@ console.log(port);
 
 // Create HTTP server
 const server = http.createServer(app);
+var mongoose = require('mongoose');
 
 //var serverSide = require("./server/test-mongodb/app");
 var serverSide = require("./server/app");
