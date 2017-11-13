@@ -11,13 +11,25 @@ module.exports = function (app) {
   app.put('/api/page/:pageId/widget?initial=index1&final=index2', sortWidgets);
 
   var multer = require('multer'); // npm install multer --save
-  var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
+  var upload = multer({ dest: __dirname+'/../../public/uploads' });
   app.post ("/api/upload", upload.single('myFile'), uploadImage);
+
+  var fs = require('fs');
+  app.get('/api/uploads', getFileUploads);
+
 
 
   var widgetModel = require('../model/widget/widget.model.server');
-  var WIDGETS = require('./widget.mock.server');
 
+
+
+  function getFileUploads(req, res) {
+    console.log('getfiles');
+    fs.readdir(__dirname+'/../../src/public/uploads',
+      function (err, files) {
+        res.send(files);
+      });
+  }
 
   function uploadImage(req, res) {
 
@@ -36,20 +48,20 @@ module.exports = function (app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    console.log('ai');
-    // widget = findWidgetByWidgetId(widgetId);
-    // widget.url = 'assets/uploads/'+filename;
-    var image = {
-      name: filename,
-      widgetType: '2',
-      pageId: pageId,
-      size: size,
-      width: width,
-      url: 'assets/uploads/' + filename
-    };
-
-    widgetModel.createWidget(widgetId, image).then(function(widget){
-      res.json(widget);});
+    console.log('uploadyes');
+    widget = findWidgetByWidgetId(widgetId);
+    widget.url = '/uploads/'+filename;
+    // var image = {
+    //   name: filename,
+    //   widgetType: '2',
+    //   pageId: pageId,
+    //   size: size,
+    //   width: width,
+    //   url: 'assets/uploads/' + filename
+    // };
+    //
+    // widgetModel.createWidget(widgetId, image).then(function(widget){
+    //   res.json(widget);});
 
     var callbackUrl   = "http://localhost:4200/profile/"+userId+"/website/"+websiteId
                         + '/page/' + pageId + '/widget';
