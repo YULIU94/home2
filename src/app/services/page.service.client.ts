@@ -6,13 +6,15 @@ import {environment} from '../../environments/environment';
 
 export class PageService {
 
+  baseUrl: String;
+  constructor(private http: Http) {
+    this.baseUrl = environment.baseUrl;
+  }
 
-  constructor(private http: Http) {}
-
-  pages = [];
+  // pages = [];
 
    createPage(websiteId, page) {
-     const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+     const url = this.baseUrl + 'api/website/' + websiteId + '/page';
      return this.http.post(url, page)
        .map((response: Response) => {
          return response.json();
@@ -20,7 +22,7 @@ export class PageService {
     }
 
   findAllPagesForWebsite(websiteId) {
-    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    const url = this.baseUrl + 'api/website/' + websiteId + '/page';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -28,7 +30,7 @@ export class PageService {
   }
 
    findPageById(pageId) {
-     const url = 'http://localhost:3100/api/page/' + pageId;
+     const url = this.baseUrl + 'api/page/' + pageId;
      return this.http.get(url)
        .map((response: Response) => {
          return response.json();
@@ -36,7 +38,7 @@ export class PageService {
   }
 
    updatePage(pageId, page) {
-     const url = 'http://localhost:3100/api/page/' + pageId;
+     const url = this.baseUrl + 'api/page/' + pageId;
      return this.http.put(url, page)
        .map((response: Response) => {
          return response.json();
@@ -44,7 +46,7 @@ export class PageService {
   }
 
    deletePage(pageId) {
-     const url = 'http://localhost:3100/api/page/' + pageId;
+     const url = this.baseUrl + 'api/page/' + pageId;
      return this.http.delete(url)
        .map((response: Response) => {
          return response.json();

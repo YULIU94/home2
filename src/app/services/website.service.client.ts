@@ -7,15 +7,16 @@ import {Website} from '../models/website.model.client';
 
 @Injectable()
 export class WebsiteService {
-
+  baseUrl: String;
 
   constructor(private http: Http) {
+    this.baseUrl = environment.baseUrl;
   }
 
   websites = WEBSITES;
 
   createWebsite(userId, website) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website';
+    const url = this.baseUrl + 'api/user/' + userId + '/website';
     return this.http.post(url, website)
       .map((response: Response) => {
         return response.json();
@@ -23,7 +24,7 @@ export class WebsiteService {
   }
 
   findWebsitesForUser(userId: String) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website';
+    const url = this.baseUrl + 'api/user/' + userId + '/website';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -31,7 +32,7 @@ export class WebsiteService {
   }
 
   findAllWebsites() {
-    return this.http.get('http://localhost:3100/api/website')
+    return this.http.get(this.baseUrl + 'api/website')
       .map(
         (res: Response) => {
           const data = res.json();
@@ -41,7 +42,7 @@ export class WebsiteService {
   }
 
   findWebsiteById(userId, websiteId) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    const url = this.baseUrl + 'api/user/' + userId + '/website/' + websiteId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -49,7 +50,7 @@ export class WebsiteService {
   }
 
   updateWebsite(userId, newWebsite, websiteId) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    const url = this.baseUrl + 'api/user/' + userId + '/website/' + websiteId;
     return this.http.put(url, newWebsite)
       .map((response: Response) => {
         return response.json();
@@ -57,7 +58,7 @@ export class WebsiteService {
   }
 
   deleteWebsite(userId: String, websiteId: String) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    const url = this.baseUrl + 'api/user/' + userId + '/website/' + websiteId;
     return this.http.delete(url)
       .map((response: Response) => {
         return response.json();

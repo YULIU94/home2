@@ -8,12 +8,14 @@ import {WIDGETS} from '../models/widget.mock.client';
 @Injectable()
 export class WidgetService {
 
-  widgets = [];
+  // widgets = [];
+  baseUrl: String;
   constructor(private http: Http) {
+    this.baseUrl = environment.baseUrl;
   }
 
    createWidget(pageId, widget) {
-     const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+     const url = this.baseUrl + 'api/page/' + pageId + '/widget';
      return this.http.post(url, widget)
        .map((response: Response) => {
          return response.json();
@@ -21,7 +23,7 @@ export class WidgetService {
   }
 
    findAllwidgetsForPage(pageId) {
-     const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+     const url = this.baseUrl + 'api/page/' + pageId + '/widget';
      return this.http.get(url)
        .map((response: Response) => {
          return response.json();
@@ -29,7 +31,7 @@ export class WidgetService {
   }
 
    findWidgetById(widgetId) {
-     const url = 'http://localhost:3100/api/widget/' + widgetId;
+     const url = this.baseUrl + 'api/widget/' + widgetId;
      return this.http.get(url)
        .map((response: Response) => {
          return response.json();
@@ -37,7 +39,7 @@ export class WidgetService {
   }
 
    updateWidget(widgetId, widget) {
-     const url = 'http://localhost:3100/api/widget/' + widgetId;
+     const url = this.baseUrl + 'api/widget/' + widgetId;
      return this.http.put(url, widget)
        .map((response: Response) => {
          return response.json();
@@ -45,7 +47,7 @@ export class WidgetService {
   }
 
   updateWidgetTextInput(widgetId, widget) {
-    const url = 'http://localhost:3100/api/widget/' + widgetId + '/textinput';
+    const url = this.baseUrl + 'api/widget/' + widgetId + '/textinput';
     return this.http.put(url, widget)
       .map((response: Response) => {
         return response.json();
@@ -53,7 +55,7 @@ export class WidgetService {
   }
 
    deleteWidget(widgetId) {
-     const url = 'http://localhost:3100/api/widget/' + widgetId;
+     const url = this.baseUrl + 'api/widget/' + widgetId;
      return this.http.delete(url)
        .map((response: Response) => {
          return response.json();
