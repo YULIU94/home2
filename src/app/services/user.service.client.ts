@@ -7,6 +7,7 @@ import {User} from '../models/user.model.client';
 
 export class UserService   {
   users: User[];
+  baseUrl: String;
 
   constructor(private http: Http) {
     // this.users = [
@@ -15,6 +16,7 @@ export class UserService   {
     //   new User('345', 'charlie', 'charlie'),
     //   new User('456', 'jannunzi', 'jannunzi')
     // ];
+    this.baseUrl = environment.baseUrl;
   }
 
 
@@ -24,7 +26,7 @@ export class UserService   {
   };
 
   createUser(user) {
-    const url = 'http://localhost:3100/api/user';
+    const url = this.baseUrl + 'api/user';
     return this.http.post(url, user)
       .map((response: Response) => {
         return response.json();
@@ -32,7 +34,7 @@ export class UserService   {
   }
 
   findUserById(userId: String) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + 'api/user/' + userId;
     return this.http.get(url)
       .map((response: Response ) => {
         return response.json();
@@ -45,7 +47,7 @@ export class UserService   {
   }
 
   findUserByCredentials(username, password) {
-    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    const url = this.baseUrl + 'api/user?username=' + username + '&password=' + password;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -53,7 +55,7 @@ export class UserService   {
   }
 
   findUserByUsername(username: String) {
-    const url = 'http://localhost:3100/api/user?username=' + username;
+    const url = this.baseUrl + 'api/user?username=' + username;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -67,7 +69,7 @@ export class UserService   {
     //     this.users[x] = user;
     //   }
     // }
-    const url = 'http://localhost:3100/api/user/' + user._id;
+    const url = this.baseUrl + 'api/user/' + user._id;
     return this.http.put(url, user)
       .map((response: Response) => {
         return response.json();
@@ -75,7 +77,7 @@ export class UserService   {
   }
 
   deleteUser(userId) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + 'api/user/' + userId;
     return this.http.delete(url)
       .map((response: Response) => {
         return response.json();
