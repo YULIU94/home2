@@ -11,6 +11,12 @@ module.exports = function (app) {
     clientSecret : 'process.env.FB_CLIENT_SECRET_WAM',
     callbackURL  : 'process.env.FB_CALL_BACK_URL_WAM'
   };
+
+  // var facebookConfig = {
+  //   clientID     : '1628876107135739',
+  //   clientSecret : '12a3dd5bb6dd458691d5f53d88d6c6a3',
+  //   callbackURL  : 'http://webdev-yu-liu.herokuapp.com/login'
+  // };
   // const passport = require('passport');
   // const LocalStrategy = require('passport-local').Strategy;
 
