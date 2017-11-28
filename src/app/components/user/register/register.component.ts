@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user.model.client';
 import {UserService} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,22 @@ export class RegisterComponent implements OnInit {
   username: String;
   password: String;
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              private sharedService: SharedService) { }
+
+  register(username, password, verifypassword) {
+    if (username.length === 0 || password.length === 0 || verifypassword.length === 0) {
+      alert('missed information!');
+    } else if (!(password === verifypassword)) {
+      alert('password not equal!');
+    }
+    this.userService
+      .register(username, password)
+      .subscribe((user) => {
+        this.sharedService.user = user;
+        this.router.navigate(['/profile']);
+      });
+  }
 
   registered(username, password, verifypassword) {
     this.username = username;

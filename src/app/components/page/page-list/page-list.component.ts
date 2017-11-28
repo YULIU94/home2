@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PageService} from '../../../services/page.service.client';
+import {SharedService} from '../../../services/shared.service.client';
 
 
 @Component({
@@ -17,13 +18,14 @@ export class PageListComponent implements OnInit {
 
   constructor(private _pageService: PageService,
               private activatedRoute: ActivatedRoute,
+              private sharedService: SharedService,
               private router: Router) {}
 
   ngOnInit() {
+    this.userId = this.sharedService.user['_id'];
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['userId'];
           this.websiteId = params['wid'];
         }
       );

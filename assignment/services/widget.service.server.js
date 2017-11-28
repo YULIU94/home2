@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   // initial : initial index of the widget before being reordered
   // final : final index of the widget after being reordered
-  app.put('/api/page/:pageId/widget?initial=index1&final=index2', sortWidgets);
+  // app.put('/api/widget?initial=index1&final=index2', sortWidgets);
 
   var multer = require('multer'); // npm install multer --save
   var upload = multer({ dest: __dirname+'/../../public/uploads' });
@@ -17,10 +17,10 @@ module.exports = function (app) {
   var fs = require('fs');
   app.get('/api/uploads', getFileUploads);
 
-
-
   var widgetModel = require('../model/widget/widget.model.server');
 
+  // sort
+  app.put("/api/page/:pageId/widget",reorderWidgets);
 
 
   function getFileUploads(req, res) {
@@ -135,6 +135,24 @@ module.exports = function (app) {
       .then(function () {
         res.json(null);
       });
+  }
+
+  function reorderWidgets(req,res) {
+    var pageId = req.params.pageId;
+    var startIndex = parseInt(req.query.start);
+    var endIndex = parseInt(req.query.end);
+    console.log(pageId);
+    console.log(startIndex);
+    console.log(endIndex);
+    widgetModel
+      .reorderWidgets(pageId, startIndex, endIndex)
+      .then(function (stats) {
+        res.send(200);
+
+      }, function (err) {
+        res.sendStatus(400).send(err);
+      });
+
   }
 
 };

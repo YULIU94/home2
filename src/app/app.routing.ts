@@ -22,6 +22,7 @@ import {WidgetEditImageComponent} from './components/widget/widget-edit/widget-e
 import {WidgetEditYoutubeComponent} from './components/widget/widget-edit/widget-edit-youtube/widget-edit-youtube.component';
 import {WidgetNewTextComponent} from './components/widget/widget-new/widget-new-text/widget-new-text.component';
 import {WidgetEditTextComponent} from './components/widget/widget-edit/widget-edit-text/widget-edit-text.component';
+import {AuthenticationService} from './services/authentication.service.client';
 // import {WidgetYoutubeComponent} from "./components/widget/widget-edit/widget-youtube/widget-youtube.component";
 
 
@@ -29,26 +30,28 @@ import {WidgetEditTextComponent} from './components/widget/widget-edit/widget-ed
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile/:userId', component: ProfileComponent},
-  {path: 'profile/:userId/website', component: WebsiteListComponent},
-  {path: 'profile/:userId/website/new', component: WebsiteNewComponent},
-  {path: 'profile/:userId/website/:wid', component: WebsiteEditComponent},
-  {path: 'profile/:userId/website/:wid/page', component: PageListComponent},
-  {path: 'profile/:userId/website/:wid/page/new', component: PageNewComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid', component: PageEditComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget', component: WidgetListComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
-  // {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationService]},
+  // {path: 'profile/:userId', component: ProfileComponent},
+  {path: 'profile/website', component: WebsiteListComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/new', component: WebsiteNewComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid', component: WebsiteEditComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page', component: PageListComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/new', component: PageNewComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid', component: PageEditComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget', component: WidgetListComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent, canActivate: [AuthenticationService]},
+  // {path: 'profile/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
 
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/header', component: WidgetNewHeaderComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/image', component: WidgetNewImageComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/youtube', component: WidgetNewYoutubeComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/text', component: WidgetNewTextComponent},
+  {path: 'profile/website/:wid/page/:pid/widget/header', component: WidgetNewHeaderComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/image', component: WidgetNewImageComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/youtube', component: WidgetNewYoutubeComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/text', component: WidgetNewTextComponent, canActivate: [AuthenticationService]},
 
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/header', component: WidgetEditHeaderComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/image', component: WidgetEditImageComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/youtube', component: WidgetEditYoutubeComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/text', component: WidgetEditTextComponent},
+  {path: 'profile/website/:wid/page/:pid/widget/:wgid/header', component: WidgetEditHeaderComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/:wgid/image', component: WidgetEditImageComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/:wgid/youtube',
+    component: WidgetEditYoutubeComponent, canActivate: [AuthenticationService]},
+  {path: 'profile/website/:wid/page/:pid/widget/:wgid/text', component: WidgetEditTextComponent, canActivate: [AuthenticationService]},
 ];
 
 // Export the routes as module providers

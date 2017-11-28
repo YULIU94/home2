@@ -1,4 +1,4 @@
-
+// declarations
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -18,6 +18,9 @@ import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-youtube/widget-youtube.component';
+
+import {SortableDirective} from './components/widget/widget-list/sortable.directive';
+import {OrderByPipe} from './components/widget/widget-list/order-by-pipe.pipe';
 
 
 // import
@@ -48,6 +51,9 @@ import { FlickrImageSearchComponent } from './components/widget/widget-image/fli
 import { WidgetTextComponent } from './components/widget/widget-text/widget-text.component';
 import { WidgetNewTextComponent } from './components/widget/widget-new/widget-new-text/widget-new-text.component';
 import { WidgetEditTextComponent } from './components/widget/widget-edit/widget-edit-text/widget-edit-text.component';
+import {SharedService} from './services/shared.service.client';
+import {AuthenticationService} from './services/authentication.service.client';
+
 
 
 
@@ -85,7 +91,9 @@ import { WidgetEditTextComponent } from './components/widget/widget-edit/widget-
     WidgetEditTextComponent,
 
     SafePipe,
-    FlickrImageSearchComponent
+    FlickrImageSearchComponent,
+    SortableDirective,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +103,7 @@ import { WidgetEditTextComponent } from './components/widget/widget-edit/widget-
     QuillEditorModule
   ],
   providers: [
-    UserService, WebsiteService, PageService, WidgetService, FlickrService
+    UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService, AuthenticationService
   ],
   bootstrap: [
     AppComponent

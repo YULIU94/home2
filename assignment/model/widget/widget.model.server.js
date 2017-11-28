@@ -12,6 +12,8 @@ widgetModel.updateWidget = updateWidget;
 widgetModel.updateWidgetTextInput = updateWidgetTextInput;
 widgetModel.deleteWidget = deleteWidget;
 widgetModel.reorderWidget = reorderWidget;
+widgetModel.reorderWidgets =  reorderWidgets;
+widgetModel.updatePosition = updatePosition;
 
 function createWidget(pageId, widget) {
   return widgetModel.create(widget);
@@ -41,6 +43,44 @@ function deleteWidget(widgetId) {
   return widgetModel.remove({_id: widgetId}, function (err) {
     if (err) return handleError(err);
   });
+}
+
+function updatePosition (pageId, position) {
+  return widgetModel.find({_page:pageId}, function (err, widgets) {
+    widgets.forEach (function (widget) {
+      if(widget.position > position){
+        widget.position--;
+        widget.save();
+      }
+    })
+  })
+}
+
+function reorderWidgets(pageId, startIndex, endIndex) {
+  return widgetModel.find({_page:pageId}, function (err,widgets) {
+    widgets.forEach (function (widget) {
+      console.log(widget);
+      if(startIndex < endIndex){
+        if(widget.position === startIndex){
+          widget.position = endIndex;
+          widget.save();
+        }else if (widget.position > startIndex
+          && widget.position <= endIndex){
+          widget.position --;
+          widget.save();
+        }else {
+          if(widget.position === startIndex){
+            widget.position = endIndex;
+            widget.save();
+          } else if(widget.position < startIndex
+            && widget.position >= endIndex){
+            widget.position ++;
+            widget.save();
+          }
+        }
+      }
+    })
+  })
 }
 
 function reorderWidget() {

@@ -5,12 +5,15 @@
          name="username"
          #username
          class="form-control"/>
+  <!--[(ngModel)]="username"-->
   <br>
   <input placeholder="password"
          type="password"
          name="password"
          #password
          class="form-control"/>
+  <!--[(ngModel)]="password"-->
+
   <input placeholder="verify password"
          type="password"
          name="verifypassword"
@@ -18,9 +21,10 @@
          class="form-control"/>
   <br>
   <a
-    (click)="registered(username.value, password.value, verifypassword.value)"
+    (click)="register(username.value, password.value, verifypassword.value)"
     class="btn btn-primary btn-block"
     >Register</a>
+  <!--(click)="registered(username.value, password.value, verifypassword.value)"-->
 
   <a
     routerLink="/login"

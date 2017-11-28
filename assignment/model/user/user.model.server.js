@@ -2,6 +2,9 @@ var mongoose = require('mongoose');
 var UserSchema = require('./user.schema.server');
 // enable switching database swiftly.
 var UserModel = mongoose.model("UserModel", UserSchema);
+var api = {
+  findUserByFacebookId: findUserByFacebookId,
+};
 
 UserModel.createUser = createUser;
 UserModel.findAllUsers = findAllUsers;
@@ -42,6 +45,10 @@ function deleteUser(userId) {
   return UserModel.remove({_id: userId}, function (err) {
     if (err) return handleError(err);
   });
+}
+
+function findUserByFacebookId(facebookId) {
+  return UserModel.findOne({'facebook.id': facebookId});
 }
 
 

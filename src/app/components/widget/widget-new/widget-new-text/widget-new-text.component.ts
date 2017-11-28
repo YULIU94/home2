@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
+import {SharedService} from '../../../../services/shared.service.client';
 
 @Component({
   selector: 'app-widget-new-text',
@@ -16,28 +17,30 @@ export class WidgetNewTextComponent implements OnInit {
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
+              private sharedService: SharedService,
               private router: Router) {}
 
   createTextInput(name, text, placeholder, rows, formatted) {
-    console.log(rows);
-    console.log(formatted);
+    if (name.length === 0) {
+      alert('miss input name');
+      return;
+    }
     const widget = {'_id': '', 'type': 4, 'placeholder': placeholder, 'text': text, 'src': '', pageId: this.pageId,
                     'rows': rows, 'formatted': formatted};
     this.widgetService.createWidget(this.pageId, widget)
       .subscribe((pages) => {
-        this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['profile', 'website', this.websiteId, 'page', this.pageId, 'widget']);
       });
   }
 
   ngOnInit() {
+    this.userId = this.sharedService.user['_id'];
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['userId'];
           this.websiteId = params['wid'];
           this.pageId = params['pid'];
         }
       );
   }
-
 }

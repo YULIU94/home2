@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
+import {SharedService} from '../../../../services/shared.service.client';
 
 @Component({
   selector: 'app-widget-new-header',
@@ -17,13 +18,18 @@ export class WidgetNewHeaderComponent implements OnInit {
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
+              private sharedService: SharedService,
               private router: Router) {}
 
   createHeader(name, text, size) {
+    if (name.length === 0) {
+      alert('miss header name');
+      return;
+    }
     const widget = {'_id': '', 'type': 1, 'size': size, 'text': this.text, 'src': '', pageId: this.pageId};
     this.widgetService.createWidget(this.pageId, widget)
       .subscribe((pages) => {
-        this.router.navigate(['profile', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['profile', 'website', this.websiteId, 'page', this.pageId, 'widget']);
       });
   }
 
@@ -32,10 +38,10 @@ export class WidgetNewHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userId = this.sharedService.user['_id'];
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['userId'];
           this.websiteId = params['wid'];
           this.pageId = params['pid'];
         }

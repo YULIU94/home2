@@ -13,9 +13,10 @@
       name="username"
       type="text"
       class="form-control"
-      ngModel
+
       required
       #username/>
+    <!--[(ngModel)]="username"-->
 
     <!--<span class="help-block" ng-if="!username.valid && username.touched">-->
       <!--Please enter username!-->
@@ -23,19 +24,28 @@
 
     <span><br></span>
     <input
+
       name= "password"
       placeholder="password"
       #password
-           type="password"
-           class="form-control"/>
+      type="password"
+      class="form-control"/>
+    <!--[(ngModel)]="password"-->
     <span><br></span>
     <button class="btn btn-primary btn-block"
             (click)="login(username.value, password.value)"
             [disabled]="!f.valid">Login</button>
+    <!--(click)="login(username.value, password.value)"-->
     <button
       routerLink="/register"
       class="btn btn-success btn-block">
         Register
+    </button>
+    <button class="btn btn-primary btn-block"
+            (click)="login_facebook()"
+            type="button">
+      <span class="fa fa-facebook"></span>
+      Facebook
     </button>
   </form>
 </div>

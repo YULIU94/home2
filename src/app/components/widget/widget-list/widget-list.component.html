@@ -2,7 +2,7 @@
 <div class="page-nav container-fluid nav-container">
   <div class="row nav-row">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page" class="navbar-link">
+      <a routerLink="/profile/website/{{websiteId}}/page" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
       </a>
     </div>
@@ -20,8 +20,10 @@
 </div>
 
 <!--Content-->
-<div class="widget-content" >
-  <ul class="widget-ul" *ngFor="let widget of widgets" [ngSwitch]="widget.type">
+<div class="widget-content" appSortable (newIndexes)="reorderWidgets($event)">
+  <!--| orderBy-->
+  <ul class="widget-ul" *ngFor="let widget of widgets "  [ngSwitch]="widget.type">
+
     <li class="widget-li" >
       <div class="widget-toolbar">
         <a *ngSwitchCase="1" routerLink="{{widget._id}}/header" >
@@ -50,13 +52,13 @@
 <!--Bottom Bar-->
 <div class="page-bottom">
   <button class="widget-bottom-left-btn glyphicon glyphicon-play pull-left">
-    <a routerLink="/profile/{{userId}}" class="navbar-link"></a>
+    <a routerLink="/profile" class="navbar-link"></a>
   </button>
   <button class="widget-bottom-left-btn glyphicon glyphicon-eye-open pull-left">
-    <a routerLink="/profile/{{userId}}" class="navbar-link"></a>
+    <a routerLink="/profile" class="navbar-link"></a>
   </button>
 
-  <a routerLink="/profile/{{userId}}" class="navbar-link">
+  <a routerLink="/profile" class="navbar-link">
     <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 

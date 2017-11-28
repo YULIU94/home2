@@ -2,13 +2,13 @@
 <div class="page-nav container-fluid nav-container">
   <div class="row nav-row">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/new" class="navbar-link">
+      <a routerLink="/profile/website/{{websiteId}}/page/{{pageId}}/widget/new" class="navbar-link">
         <button class="page-nav-btn glyphicon glyphicon-chevron-left pull-left"></button>
       </a>
     </div>
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <p class="page-nav-p pull-left">
-        <b>Widget Edit</b>
+        <b>New Header</b>
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -40,7 +40,7 @@
              <!--type="text"-->
              <!--#text-->
              <!--placeholder="US Senate Reaches Compromise">-->
-      <quill-editor (change)="onContentChanged($event)"> </quill-editor>
+      <quill-editor (change)="onContentChanged($event)" #text> </quill-editor>
     </li>
     <li class="widget-li">
       <div class="widget-input-title">
@@ -51,15 +51,12 @@
              #size
              placeholder="3">
     </li>
-    <li>
-      <a class="btn btn-block btn-delete">Delete</a>
-    </li>
   </ul>
 </div>
 
 <!--Bottom Bar-->
 <div class="page-bottom">
-  <a routerLink="/profile/{{userId}}" class="navbar-link">
+  <a routerLink="/profile" class="navbar-link">
     <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 </div>
