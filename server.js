@@ -71,26 +71,26 @@ app.get('*', function (req, res) {
 
 server.listen( port , () => console.log('Running'));
 
-function isOriginAllowed(origin, allowedOrigin) {
-  if (_.isArray(allowedOrigin)) {
-    for(let i = 0; i < allowedOrigin.length; i++) {
-      if(isOriginAllowed(origin, allowedOrigin[i])) {
-        return true;
-      }
-    }
-    return false;
-  } else if (_.isString(allowedOrigin)) {
-    return origin === allowedOrigin;
-  } else if (allowedOrigin instanceof RegExp) {
-    return allowedOrigin.test(origin);
-  } else {
-    return !!allowedOrigin;
-  }
-}
-
-const ALLOW_ORIGIN = [  // 域名白名单
-  'http://localhost:4200',
-  'https://www.facebook.com'
-];
+// function isOriginAllowed(origin, allowedOrigin) {
+//   if (_.isArray(allowedOrigin)) {
+//     for(let i = 0; i < allowedOrigin.length; i++) {
+//       if(isOriginAllowed(origin, allowedOrigin[i])) {
+//         return true;
+//       }
+//     }
+//     return false;
+//   } else if (_.isString(allowedOrigin)) {
+//     return origin === allowedOrigin;
+//   } else if (allowedOrigin instanceof RegExp) {
+//     return allowedOrigin.test(origin);
+//   } else {
+//     return !!allowedOrigin;
+//   }
+// }
+//
+// const ALLOW_ORIGIN = [  // 域名白名单
+//   'http://localhost:4200',
+//   'https://www.facebook.com'
+// ];
 
 
