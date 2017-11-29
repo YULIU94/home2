@@ -38,6 +38,9 @@
         <a *ngSwitchCase="4" routerLink="{{widget._id}}/text" >
           <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
         </a>
+        <a *ngSwitchCase="5" routerLink="{{widget._id}}/html" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
         <button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>
       </div>
       <app-widget-heading *ngSwitchCase='1' [widget]="widget"></app-widget-heading>
@@ -45,6 +48,7 @@
       <app-widget-image *ngSwitchCase='2' [widget]="widget"></app-widget-image>
       <app-widget-youtube *ngSwitchCase="3" [widget]="widget"></app-widget-youtube>
       <app-widget-text *ngSwitchCase="4" [widget]="widget"></app-widget-text>
+      <app-widget-html *ngSwitchCase="5" [widget]="widget"></app-widget-html>
     </li>
   </ul>
 </div>

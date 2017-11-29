@@ -3,6 +3,7 @@ module.exports = function (app) {
   app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
   app.get('/api/widget/:widgetId', findWidgetById);
   app.put('/api/widget/:widgetId', updateWidget);
+  app.put('/api/widget/:widgetId/header', updateWidgetHeader);
   app.put('/api/widget/:widgetId/textinput', updateWidgetTextInput);
   app.delete('/api/widget/:widgetId', deleteWidget);
 
@@ -118,9 +119,20 @@ module.exports = function (app) {
       });
   }
 
+  function updateWidgetHeader(req, res) {
+    var widgetId = req.params['widgetId'];
+    var widget = req.body;
+    widgetModel
+      .updateWidgetHeader(widgetId, widget)
+      .then(function (status) {
+        res.send(status);
+      });
+  }
+
   function updateWidgetTextInput(req, res) {
     var widgetId = req.params['widgetId'];
     var widget = req.body;
+    console.log(widget);
     widgetModel
       .updateWidgetTextInput(widgetId, widget)
       .then(function (status) {

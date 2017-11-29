@@ -53,6 +53,9 @@ import { WidgetNewTextComponent } from './components/widget/widget-new/widget-ne
 import { WidgetEditTextComponent } from './components/widget/widget-edit/widget-edit-text/widget-edit-text.component';
 import {SharedService} from './services/shared.service.client';
 import {AuthenticationService} from './services/authentication.service.client';
+import { WidgetHtmlComponent } from './components/widget/widget-html/widget-html.component';
+import { WidgetNewHtmlComponent } from './components/widget/widget-new/widget-new-html/widget-new-html.component';
+import { WidgetEditHtmlComponent } from './components/widget/widget-edit/widget-edit-html/widget-edit-html.component';
 
 
 
@@ -81,10 +84,14 @@ import {AuthenticationService} from './services/authentication.service.client';
     WidgetYoutubeComponent,
     WidgetTextComponent,
     WidgetHeadingComponent,
+    WidgetHtmlComponent,
+
     WidgetNewHeaderComponent,
     WidgetNewImageComponent,
     WidgetNewYoutubeComponent,
     WidgetNewTextComponent,
+    WidgetNewHtmlComponent,
+
     WidgetEditHeaderComponent,
     WidgetEditImageComponent,
     WidgetEditYoutubeComponent,
@@ -94,6 +101,9 @@ import {AuthenticationService} from './services/authentication.service.client';
     FlickrImageSearchComponent,
     SortableDirective,
     OrderByPipe,
+    WidgetEditHtmlComponent,
+
+
   ],
   imports: [
     BrowserModule,

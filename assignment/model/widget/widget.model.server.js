@@ -9,6 +9,7 @@ widgetModel.createWidget = createWidget;
 widgetModel.findAllWidgetForPage = findAllWidgetForPage;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
+widgetModel.updateWidgetHeader = updateWidgetHeader;
 widgetModel.updateWidgetTextInput = updateWidgetTextInput;
 widgetModel.deleteWidget = deleteWidget;
 widgetModel.reorderWidget = reorderWidget;
@@ -34,7 +35,13 @@ function updateWidget(widgetId, widget) {
   return widgetModel.update({_id: widgetId}, {$set: {size: size, text: widget.text, url: widget.src}});
 }
 
+function updateWidgetHeader(widgetId, widget) {
+  return widgetModel.update({_id: widgetId}, {$set: {name: widget.name, text: widget.text, size: widget.size}});
+}
+
 function updateWidgetTextInput(widgetId, widget) {
+  console.log(widgetId);
+  console.log(widget);
   return widgetModel.update({_id: widgetId}, {$set: {name: widget.name, rows: widget.rows, text: widget.text,
                                                       placeholder: widget.placeholder, formatted: widget.formatted}});
 }

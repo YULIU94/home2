@@ -16,7 +16,7 @@ export class WidgetEditHeaderComponent implements OnInit {
   pageId: String;
   widgetId: String;
   widget;
-  text = String;
+  text: String;
 
 
   constructor(private widgetService: WidgetService,
@@ -29,8 +29,8 @@ export class WidgetEditHeaderComponent implements OnInit {
       alert('miss widget name');
       return;
     }
-    const newWidget = {'widgetId': this.widgetId, 'type': this.widget.type, 'size': size, 'text': this.text};
-    this.widgetService.updateWidgetTextInput(this.widgetId, newWidget)
+    const newWidget = {'widgetId': this.widgetId, 'name': name, 'text': this.text, 'size': size};
+    this.widgetService.updateWidgetHeader(this.widgetId, newWidget)
       .subscribe((widget) => {
         this.router.navigate(['profile', 'website', this.websiteId, 'page', this.pageId, 'widget']);
       });

@@ -46,6 +46,14 @@ export class WidgetService {
        });
   }
 
+  updateWidgetHeader(widgetId, widget) {
+    const url = this.baseUrl + 'api/widget/' + widgetId + '/header';
+    return this.http.put(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
   updateWidgetTextInput(widgetId, widget) {
     const url = this.baseUrl + 'api/widget/' + widgetId + '/textinput';
     return this.http.put(url, widget)
