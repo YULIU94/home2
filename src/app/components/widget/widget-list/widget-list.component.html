@@ -22,7 +22,8 @@
 <!--Content-->
 <div class="widget-content" appSortable (newIndexes)="reorderWidgets($event)">
   <!--| orderBy-->
-  <ul class="widget-ul" *ngFor="let widget of widgets"  [ngSwitch]="widget.type">
+  <ul class="widget-ul" *ngFor="let widget of widgets">
+    <div [ngSwitch] = "widget.type" >
 
     <li class="widget-li" >
       <div class="widget-toolbar">
@@ -50,6 +51,7 @@
       <app-widget-text *ngSwitchCase="4" [widget]="widget"></app-widget-text>
       <app-widget-html *ngSwitchCase="5" [widget]="widget"></app-widget-html>
     </li>
+    </div>
   </ul>
 </div>
 

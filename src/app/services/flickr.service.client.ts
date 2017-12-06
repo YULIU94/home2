@@ -21,4 +21,6 @@ export class FlickrService {
         return response;
       });
   }
+
+
 }

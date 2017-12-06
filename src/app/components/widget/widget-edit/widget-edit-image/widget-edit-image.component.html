@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 nav-right">
-      <a  class="navbar-link">
+      <a  class="navbar-link" (click)="saveWidget(name.value, text.value, url.value)">
         <button class="page-nav-btn glyphicon glyphicon-ok pull-right"></button>
       </a>
     </div>
@@ -26,19 +26,24 @@
       <div class="widget-input-title">
         <span>Name</span>
       </div>
-      <input class="widget-input" type="text">
+      <input class="widget-input"
+             #name
+             type="text">
     </li>
     <li class="widget-li">
       <div class="widget-input-title">
         <span>Text</span>
       </div>
-      <input class="widget-input" type="text">
+      <input class="widget-input"
+             #text
+             type="text">
     </li>
     <li class="widget-li">
       <div class="widget-input-title">
         <span>URL</span>
       </div>
       <input class="widget-input"
+             #url
              placeholder="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/plot_state_borders.py"
              type="text">
     </li>
@@ -65,11 +70,12 @@
       <a class="btn btn-block btn-delete">Delete</a>
     </li>
   </ul>
+  <app-flickr-image-search></app-flickr-image-search>
 </div>
 
 <!--Bottom Bar-->
 <div class="page-bottom">
-  <a href="../user/profile.html" class="navbar-link">
+  <a routerLink="/profile" class="navbar-link">
     <button class="page-bottom-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 </div>

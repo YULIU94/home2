@@ -46,6 +46,14 @@ export class WidgetService {
        });
   }
 
+  updateWidgetImage(widgetId, widget) {
+    const url = this.baseUrl + 'api/widget/' + widgetId + '/image';
+    return this.http.put(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
   updateWidgetHeader(widgetId, widget) {
     const url = this.baseUrl + 'api/widget/' + widgetId + '/header';
     return this.http.put(url, widget)

@@ -21,6 +21,17 @@ export class WidgetEditImageComponent implements OnInit {
               private sharedService: SharedService,
               private router: Router) {}
 
+  saveWidget(name, text, url) {
+    if (name.length === 0) {
+      alert('miss widget name');
+      return;
+    }
+    const newWidget = {'widgetId': this.widgetId, 'name': name, 'text': text, 'url': url};
+    this.widgetService.updateWidgetImage(this.widgetId, newWidget)
+      .subscribe((widget) => {
+        this.router.navigate(['profile', 'website', this.websiteId, 'page', this.pageId, 'widget']);
+      });
+  }
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];

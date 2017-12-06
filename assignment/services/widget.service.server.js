@@ -1,9 +1,11 @@
 module.exports = function (app) {
   app.post('/api/page/:pageId/widget', createWidget);
   app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
+  app.put('/api/page/:pageId/widget', reorderWidgets);
   app.get('/api/widget/:widgetId', findWidgetById);
   app.put('/api/widget/:widgetId', updateWidget);
   app.put('/api/widget/:widgetId/header', updateWidgetHeader);
+  app.put('/api/widget/:widgetId/image', updateWidgetImage);
   app.put('/api/widget/:widgetId/textinput', updateWidgetTextInput);
   app.delete('/api/widget/:widgetId', deleteWidget);
 
@@ -119,6 +121,16 @@ module.exports = function (app) {
       });
   }
 
+  function updateWidgetImage(req, res) {
+    var widgetId = req.params['widgetId'];
+    var widget = req.body;
+    widgetModel
+      .updateWidgetImage(widgetId, widget)
+      .then(function (status) {
+        res.send(status);
+      });
+  }
+
   function updateWidgetHeader(req, res) {
     var widgetId = req.params['widgetId'];
     var widget = req.body;
@@ -153,14 +165,13 @@ module.exports = function (app) {
     var pageId = req.params.pageId;
     var startIndex = parseInt(req.query.start);
     var endIndex = parseInt(req.query.end);
-    console.log(pageId);
-    console.log(startIndex);
-    console.log(endIndex);
+    // console.log(pageId);
+    // console.log(startIndex);
+    // console.log(endIndex);
     widgetModel
       .reorderWidgets(pageId, startIndex, endIndex)
       .then(function (stats) {
         res.send(200);
-
       }, function (err) {
         res.sendStatus(400).send(err);
       });

@@ -26,6 +26,9 @@ export class WidgetNewHeaderComponent implements OnInit {
       alert('miss header name');
       return;
     }
+    if (size.length === 0) {
+      size = 3;
+    }
     const widget = {'_id': '', 'type': 1, 'size': size, 'text': this.text, 'src': '', pageId: this.pageId};
     this.widgetService.createWidget(this.pageId, widget)
       .subscribe((pages) => {

@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var PageSchema = require('../page/page.schema.server');
 var WidgetSchema = require('./widget.schema.server');
 var widgetModel = mongoose.model("WidgetModel", WidgetSchema);
+var pageModel = mongoose.model("PageModel", PageSchema);
 
 module.exports = widgetModel;
 
@@ -10,21 +11,47 @@ widgetModel.findAllWidgetForPage = findAllWidgetForPage;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
 widgetModel.updateWidgetHeader = updateWidgetHeader;
+widgetModel.updateWidgetImage = updateWidgetImage;
 widgetModel.updateWidgetTextInput = updateWidgetTextInput;
 widgetModel.deleteWidget = deleteWidget;
-widgetModel.reorderWidget = reorderWidget;
+// widgetModel.reorderWidget = reorderWidget;
 widgetModel.reorderWidgets =  reorderWidgets;
 widgetModel.updatePosition = updatePosition;
 
 function createWidget(pageId, widget) {
-  return widgetModel.create(widget);
+  var widget_temp = widget;
+  var pageId = widget_temp._page;
+  var amt;
+  widgetModel
+    .find({_page: pageId})
+    .then(function (widgets){
+      amt = widgets.length;
+      widget_temp.position = amt;
+    });
+
+  return widgetModel
+    .create(widget)
+    .then(function(widget){
+      var newWidget = widget;
+      newWidget.position = amt;
+      newWidget.save();
+      return pageModel
+        .findPageById(newWidget._page);
+        // .then(function(page){
+        //   page.widgets.push(newWidget._id);
+        //   //return the saved website
+        //   return newWidget;
+        // });
+    });
 }
 
 function findAllWidgetForPage(pageId) {
   return widgetModel
     .find({pageId: pageId})
-    .populate('_page') // populate website here
-    .exec();
+    .sort({position: 1});
+    // .find({pageId: pageId});
+    // .populate('_page') // populate website here
+    // .exec();
 }
 
 function findWidgetById(widgetId) {
@@ -32,7 +59,12 @@ function findWidgetById(widgetId) {
 }
 
 function updateWidget(widgetId, widget) {
-  return widgetModel.update({_id: widgetId}, {$set: {size: size, text: widget.text, url: widget.src}});
+  return widgetModel.update({_id: widgetId}, {$set: {size: size, text: widget.text, url: widget.url}});
+}
+
+function updateWidgetImage(widgetId, widget) {
+
+  return widgetModel.update({_id: widgetId}, {$set: {name: widget.name, text: widget.text, url: widget.url}});
 }
 
 function updateWidgetHeader(widgetId, widget) {
@@ -40,8 +72,6 @@ function updateWidgetHeader(widgetId, widget) {
 }
 
 function updateWidgetTextInput(widgetId, widget) {
-  console.log(widgetId);
-  console.log(widget);
   return widgetModel.update({_id: widgetId}, {$set: {name: widget.name, rows: widget.rows, text: widget.text,
                                                       placeholder: widget.placeholder, formatted: widget.formatted}});
 }
@@ -53,7 +83,7 @@ function deleteWidget(widgetId) {
 }
 
 function updatePosition (pageId, position) {
-  return widgetModel.find({_page:pageId}, function (err, widgets) {
+  return widgetModel.find({pageId:pageId}, function (err, widgets) {
     widgets.forEach (function (widget) {
       if(widget.position > position){
         widget.position--;
@@ -64,32 +94,38 @@ function updatePosition (pageId, position) {
 }
 
 function reorderWidgets(pageId, startIndex, endIndex) {
-  return widgetModel.find({_page:pageId}, function (err,widgets) {
-    widgets.forEach (function (widget) {
-      console.log(widget);
-      if(startIndex < endIndex){
-        if(widget.position === startIndex){
-          widget.position = endIndex;
-          widget.save();
-        }else if (widget.position > startIndex
-          && widget.position <= endIndex){
-          widget.position --;
-          widget.save();
-        }else {
+  console.log('start');
+  return widgetModel.find({pageId:pageId}, function (err,widgets) {
+      console.log(widgets);
+      widgets.forEach (function (widget) {
+        console.log(widget.position);
+        // console.log('reorder');
+
+        if(startIndex < endIndex){
           if(widget.position === startIndex){
             widget.position = endIndex;
-            widget.save();
-          } else if(widget.position < startIndex
-            && widget.position >= endIndex){
-            widget.position ++;
-            widget.save();
+            return widget.save();
+          }else if (widget.position > startIndex
+            && widget.position <= endIndex){
+            widget.position --;
+            return widget.save();
+          }else {
+            if(widget.position === startIndex){
+              widget.position = endIndex;
+              return widget.save();
+            } else if(widget.position < startIndex
+              && widget.position >= endIndex){
+              widget.position ++;
+              return widget.save();
+            }
           }
         }
-      }
-    })
+        console.log(widget.position);
+    });
+    console.log(widgets);
   })
 }
 
-function reorderWidget() {
-
-}
+// function reorderWidget() {
+//
+// }

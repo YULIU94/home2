@@ -29,6 +29,9 @@ export class WidgetEditHeaderComponent implements OnInit {
       alert('miss widget name');
       return;
     }
+    if (size.length === 0) {
+      size = 3;
+    }
     const newWidget = {'widgetId': this.widgetId, 'name': name, 'text': this.text, 'size': size};
     this.widgetService.updateWidgetHeader(this.widgetId, newWidget)
       .subscribe((widget) => {

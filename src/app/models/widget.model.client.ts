@@ -4,6 +4,7 @@ export class Widget {
   size: Number;
   text: String;
   url: String;
+  position: Number;
 
   constructor(id: String, type: String, size: Number, text: String, url: String) {
     this._id = id;
