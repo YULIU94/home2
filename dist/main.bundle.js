@@ -676,9 +676,6 @@ var LoginComponent = (function () {
             // server will record the user
             _this.sharedService.user = user;
             _this.router.navigate(['/profile']);
-        }, function (error) {
-            console.log(error);
-            alert('Invalid username or password');
         });
     };
     LoginComponent.prototype.login_facebook = function () {

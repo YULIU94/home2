@@ -37,11 +37,7 @@ export class LoginComponent implements OnInit {
         // server will record the user
         this.sharedService.user = user;
         this.router.navigate(['/profile']);
-      },
-        (error: any) => {
-          console.log(error);
-          alert('Invalid username or password');
-        });
+      });
   }
 
   login_facebook() {
