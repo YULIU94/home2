@@ -3,12 +3,11 @@ import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
 import {Widget} from '../models/widget.model.client';
-import {WIDGETS} from '../models/widget.mock.client';
+// import {WIDGETS} from '../models/widget.mock.client';
 
 @Injectable()
 export class WidgetService {
 
-  // widgets = [];
   baseUrl: String;
   constructor(private http: Http) {
     this.baseUrl = environment.baseUrl;
