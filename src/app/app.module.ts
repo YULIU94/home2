@@ -56,6 +56,7 @@ import {AuthenticationService} from './services/authentication.service.client';
 import { WidgetHtmlComponent } from './components/widget/widget-html/widget-html.component';
 import { WidgetNewHtmlComponent } from './components/widget/widget-new/widget-new-html/widget-new-html.component';
 import { WidgetEditHtmlComponent } from './components/widget/widget-edit/widget-edit-html/widget-edit-html.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -102,6 +103,7 @@ import { WidgetEditHtmlComponent } from './components/widget/widget-edit/widget-
     SortableDirective,
     OrderByPipe,
     WidgetEditHtmlComponent,
+    HomeComponent,
 
 
   ],
