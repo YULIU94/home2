@@ -39,7 +39,7 @@ import {HomeComponent} from './components/home/home.component';
 
 const APP_ROUTES: Routes = [
   {path: '', component: HomeComponent},
-  // {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   // {path: 'register', component: RegisterComponent},
   // {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationService]},
   // // {path: 'profile/:userId', component: ProfileComponent},
